@@ -1,0 +1,110 @@
+/* *{
+    border:1px solid black;
+} */
+body{
+    padding: 0;
+    margin:0;
+    display: flex;
+    flex-direction: column;
+}
+
+ul>li{
+    list-style-type: none;
+}
+
+main{
+    width: 98vw;
+    max-width: 65em;
+    align-self: center; 
+}
+
+footer{
+    width: 98vw;
+    max-width: 65em;
+    align-self: center; 
+}
+
+header{
+    width: 98vw;
+    max-width: 65em;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-image: linear-gradient(-45deg,#003153,#1E5945,#3F888F,#30D5C8,#77DDE7);
+}
+
+div.logo{
+    background-image: url("images/логотип/Autobus.png");
+    background-repeat: no-repeat;
+    background-size: 6em auto;
+    width:6em;
+    height: 5em;
+}
+
+ul.navigation{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-self: center;
+    float:right;
+    background: linear-gradient(45deg,#30D5C8,#77DDE7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+ul.navigation>li{
+    padding-right:1em;
+}
+
+.search-form{
+    background-image: linear-gradient(-45deg,#2271B3,#ACE5EE);
+    padding:0 5vw 1em;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+div.search-inputs{
+    width: 90vw;
+    max-width: 55em;
+    display: grid;
+    gap: 0.5em;
+    grid-template-columns: auto 1fr 1fr;
+}
+
+div.search-form input{
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+div.search-form label{
+    width:max-content;
+}
+
+div.search-form>[type="button"]{
+    width:10em;
+    height:2em;
+    align-self: flex-end;
+    margin-top:1em;
+}
+
+.promo{
+    display: grid;
+    gap: 1em;
+    grid-template-columns: 10em 1fr;
+    grid-template-rows: 1em 1fr 2em;
+    margin-bottom:1em;
+    padding-right: 1em;
+}
+
+.promo-image{
+    grid-row-start: 1;
+    grid-row-end: 4;
+    width:10em;
+}
+
+.promo>input[type="button"]{
+    width:10em;
+    height: 2em;
+}

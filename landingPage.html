@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Park</title>
+    <link rel="stylesheet" href="styles/landingPageStyle.css">
+</head>
+<body>
+    <header>
+        <div class="logo"></div>
+        <ul class="navigation">
+            <li><a href="#">Акции</a></li>
+            <li><a href="#">Поиск</a></li>
+            <li><a href="#">Регистрация на рейс</a></li>
+            <li><a href="#">Личный кабинет</a></li>
+        </ul>
+    </header>
+    <main>
+        <div class="description"></div>
+        <div class="trust"></div>
+        <div class="search-form">
+            <h1>Форма для поиска</h1>
+            <div class="search-inputs">
+                <label for="flight-from">Откуда</label>
+                <input type="text" name="from" id="flight-from">
+                <label for="flight-to">Куда</label>
+                <input type="text" name="to" id="flight-to">
+                <label for="departure-date">Дата отправления</label>
+                <input type="text" name="from-date" id="departure-date">
+                <label for="back-date">Дата прибытия</label>
+                <input type="text" name="reverse-date" id="back-date">
+                <label for="count-of-passanger-in-bus">Количество пассажиров</label>
+                <input type="number" max="8" min="1" name="passanger-count" id="count-of-passanger-in-bus">
+            </div>
+            <input type="button" value="Поиск">
+        </div>
+        <div class="promos">
+            <ul class="promotions">
+                <li class="promo">
+                    <img src="./styles/images/EA8_FH8W4AE8Bm7.jpg" alt="Tickets" class="promo-image">
+                    <div class="name">Returning and Changing Your Tickets</div>
+                    <div class="short-description">The pandemic has changed many travelers’ plans, but we know that it will not last forever. 
+                        Once all of this is over, we will continue exploring this world the way we used to. 
+                        Special rules that have been developed for this challenging situation will help you cancel your trip
+                        or postpone it until later.</div>
+                    <input type="button" value="Просмотр">
+                </li>
+                <li class="promo">
+                    <img src="./styles/images/bus.jpg" alt="Tickets" class="promo-image">
+                    <div class="name">Best offers</div>
+                    <div class="short-description">To see again the streets that witnessed so much. To hug your beloved ones and look back to see
+                        what you’ve come through. And to think of new dreams that will be so special!</div>
+                    <input type="button" value="Просмотр">
+                </li>
+                <li class="promo">
+                    <img src="./styles/images/Cyg2iLTWQAA44Sa.jpg_large.jpg" alt="Tickets" class="promo-image">
+                    <div class="name">See you more often</div>
+                    <div class="short-description">Since the beginning of the summer season, we are expanding the geography of cruises in Russia so that you can see all the beauty and grandeur of the Volga River. Choose our company to enjoy the magnificent scenery and spend your vacation in nature.</div>
+                    <input type="button" value="Просмотр">
+                </li>
+                <li class="promo">
+                    <img src="./styles/images/korporativnye-poezdki.jpg" alt="Tickets" class="promo-image">
+                    <div class="name">Group discounts </div>
+                    <div class="short-description">Regardless of how large your group is and what kind of event you are planning, a cruise is exactly what will suit you. A meeting with family and friends, the anniversary of the company, a professional holiday - everything will be successful if a snow-white motor ship becomes the platform, and unique river landscapes are the scenery.</div>
+                    <input type="button" value="Просмотр">
+                </li>
+            </ul>
+        </div>
+        <div class="subscribe-on-closed-promo">
+            <input type="text" name="e-mail" id="subscribe-e-mail">
+            <input type="button" value="Подписаться">
+        </div>
+    </main>
+    <footer>
+        <div class="company-number"></div>
+        <div class="navigation-links"></div>
+    </footer>
+    <script src="scripts/landingPage.js"></script>
+</body>
+</html>
