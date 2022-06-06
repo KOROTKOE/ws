@@ -6,6 +6,7 @@ body{
     margin:0;
     display: flex;
     flex-direction: column;
+    background-image: linear-gradient(-45deg,#2271B3,#ACE5EE);
 }
 
 ul>li{
@@ -31,7 +32,6 @@ header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-image: linear-gradient(-45deg,#003153,#1E5945,#3F888F,#30D5C8,#77DDE7);
 }
 
 div.logo{
@@ -48,7 +48,7 @@ ul.navigation{
     justify-content: flex-end;
     align-self: center;
     float:right;
-    background: linear-gradient(45deg,#30D5C8,#77DDE7);
+    background: linear-gradient(45deg,#6212b7,#224eb3);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -58,7 +58,6 @@ ul.navigation>li{
 }
 
 .search-form{
-    background-image: linear-gradient(-45deg,#2271B3,#ACE5EE);
     padding:0 5vw 1em;
     display:flex;
     flex-direction: column;
