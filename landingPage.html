@@ -18,42 +18,40 @@
         </ul>
     </header>
     <main>
-        <div class="search-form">
-            <h2>Форма для поиска</h2>
-            <div class="search-inputs">
-                <label for="flight-from">Откуда</label>
-                <input type="text" name="from" id="flight-from">
-                <label for="flight-to">Куда</label>
-                <input type="text" name="to" id="flight-to">
-                <label for="departure-date">Дата отправления</label>
-                <input type="text" name="from-date" id="departure-date">
-                <label for="back-date">Дата прибытия</label>
-                <input type="text" name="reverse-date" id="back-date">
-                <label for="count-of-passanger-in-bus">Количество пассажиров</label>
-                <input type="number" max="8" min="1" name="passanger-count" id="count-of-passanger-in-bus">
+        <div class="form-description">
+            <div class="search-form">
+                <h2>Форма для поиска</h2>
+                <div class="search-inputs">
+                    <input type="text" name="from" id="flight-from" placeholder="Откуда">
+                    <div id="bottom-arrow">&#8595</div>
+                    <input type="number" max="8" min="1" name="passanger-count" id="count-of-passanger-in-bus" placeholder="Количество пассажиров">
+                    <input type="text" name="from-date" id="departure-date" placeholder="Дата отправления">
+                    <input type="text" name="reverse-date" id="back-date" placeholder="Дата прибытия">
+                    <input type="text" name="to" id="flight-to" placeholder="Куда">
+                    <input type="button" value="Поиск" id = "search-button">
+                </div>
             </div>
-            <input type="button" value="Поиск">
-        </div>
-        <div class="description">
-            <h2>Принципы бронирования нашей компании</h2>
-            <p class="principles-description">
-                При бронировании в нашей компании у Вас есть возможность сохранить при себе деньги, при условии оплаты багажа.
-            </p>
-            <div>
-                <ul class="principles">
-                    <li>
-                        <img src="styles/images/ComfortClass_Setra_Busses.jpg" class="principle-image">
-                        <p>Есть возможность выбора даты</p>
-                    </li>
-                    <li>
-                        <img src="styles/images/2560x1600_1455055_[www.ArtFile.ru].jpg" class="principle-image">
-                        <p>Можно устанавливать количество броней</p>
-                    </li>
-                    <li>
-                        <img src="styles/images/WhatsApp_Image_2019-.jpeg" class="principle-image">
-                        <p>Есть возможность получить вероятность отправления в реальном времени</p>
-                    </li>
-                </ul>
+            <div class="description">
+                <h2>Принципы бронирования нашей компании</h2>
+                <p class="principles-description">
+                    При бронировании в нашей компании у Вас есть возможность сохранить при себе деньги, при условии оплаты багажа.
+                </p>
+                <div>
+                    <ul class="principles">
+                        <li>
+                            <img src="styles/images/ComfortClass_Setra_Busses.jpg" class="principle-image">
+                            <p>Есть возможность выбора даты</p>
+                        </li>
+                        <li>
+                            <img src="styles/images/2560x1600_1455055_[www.ArtFile.ru].jpg" class="principle-image">
+                            <p>Можно устанавливать количество броней</p>
+                        </li>
+                        <li>
+                            <img src="styles/images/WhatsApp_Image_2019-.jpeg" class="principle-image">
+                            <p>Есть возможность получить вероятность отправления в реальном времени</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="trust">
@@ -66,8 +64,8 @@
             </p>
         </div>
         <div class="promos">
+            <h2>Акции</h2>
             <ul class="promotions">
-                <h2>Акции</h2>
                 <li class="promo">
                     <img src="./styles/images/EA8_FH8W4AE8Bm7.jpg" alt="Tickets" class="promo-image">
                     <div class="name">Returning and Changing Your Tickets</div>
