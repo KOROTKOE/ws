@@ -18,10 +18,8 @@
         </ul>
     </header>
     <main>
-        <div class="description"></div>
-        <div class="trust"></div>
         <div class="search-form">
-            <h1>Форма для поиска</h1>
+            <h2>Форма для поиска</h2>
             <div class="search-inputs">
                 <label for="flight-from">Откуда</label>
                 <input type="text" name="from" id="flight-from">
@@ -36,8 +34,40 @@
             </div>
             <input type="button" value="Поиск">
         </div>
+        <div class="description">
+            <h2>Принципы бронирования нашей компании</h2>
+            <p class="principles-description">
+                При бронировании в нашей компании у Вас есть возможность сохранить при себе деньги, при условии оплаты багажа.
+            </p>
+            <div>
+                <ul class="principles">
+                    <li>
+                        <img src="styles/images/ComfortClass_Setra_Busses.jpg" class="principle-image">
+                        <p>Есть возможность выбора даты</p>
+                    </li>
+                    <li>
+                        <img src="styles/images/2560x1600_1455055_[www.ArtFile.ru].jpg" class="principle-image">
+                        <p>Можно устанавливать количество броней</p>
+                    </li>
+                    <li>
+                        <img src="styles/images/WhatsApp_Image_2019-.jpeg" class="principle-image">
+                        <p>Есть возможность получить вероятность отправления в реальном времени</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="trust">
+            <h2>Вы можете доверять нам</h2>
+            <p>
+                Мы работаем с 1945 года и не имеем ни одного отрицательного отзыва.
+                При отмене рейса мы заранее предупредим и предоставим подходящие рейсы.
+                Если вы откажетесь от поездки то мы вернем деньги.
+                Чтобы связаться с нами, вы можете позвонить к нам по номеру 8 (800) 100-10-10 или можете написать письмо на наш e-mail example@gmail.com 
+            </p>
+        </div>
         <div class="promos">
             <ul class="promotions">
+                <h2>Акции</h2>
                 <li class="promo">
                     <img src="./styles/images/EA8_FH8W4AE8Bm7.jpg" alt="Tickets" class="promo-image">
                     <div class="name">Returning and Changing Your Tickets</div>
@@ -69,13 +99,26 @@
             </ul>
         </div>
         <div class="subscribe-on-closed-promo">
-            <input type="text" name="e-mail" id="subscribe-e-mail">
-            <input type="button" value="Подписаться">
+            <h2>Подпишись на нас</h2>
+            <div class="e-mail">
+                <label for="subscribe-e-mail">Ваша почта</label>
+                <input type="text" name="e-mail" id="subscribe-e-mail" title="Электронная почта" placeholder="example@mail.ru">
+                <input type="button" value="Подписаться">
+            </div>
         </div>
     </main>
     <footer>
-        <div class="company-number"></div>
-        <div class="navigation-links"></div>
+        <p>Номер телефона компании: 8 (800) 100-10-10
+        </p>
+            <ul class="navigation-links">
+                <li><a href="landingPage.html">Home</a></li>
+                <li><a href="">Login</a></li>
+                <li><a href="">Sign up</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">News</a></li>
+                <li><a href="javascript:history.back(-2); return false;">Return</a></li>
+                <li><a href="">Feedback</a></li>
+            </ul>
     </footer>
     <script src="scripts/landingPage.js"></script>
 </body>

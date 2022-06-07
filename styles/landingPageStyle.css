@@ -6,11 +6,21 @@ body{
     margin:0;
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(-45deg,#2271B3,#ACE5EE);
+    background-image: linear-gradient(45deg,#2271B3,#ACE5EE);
+    font-family: Helvetica;
+    color:	#ACE5EE;
+}
+
+ul{
+    padding: 0;
 }
 
 ul>li{
     list-style-type: none;
+}
+
+a{
+    text-decoration: none;
 }
 
 main{
@@ -48,7 +58,7 @@ ul.navigation{
     justify-content: flex-end;
     align-self: center;
     float:right;
-    background: linear-gradient(45deg,#6212b7,#224eb3);
+    background-image: linear-gradient(45deg,#6212b7,#224eb3);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -57,11 +67,41 @@ ul.navigation>li{
     padding-right:1em;
 }
 
+ul.navigation>li:last-child{
+    padding: 0;
+}
+
+.description{
+    margin:0 2em;
+}
+
+.principles{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.principles li{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+}
+
+.principle-image{
+    width:10em;
+}
+
+.trust{
+    margin:0 2em
+}
+
 .search-form{
     padding:0 5vw 1em;
     display:flex;
     flex-direction: column;
     justify-content: space-between;
+    color:	#ACE5EE;
+    background-color: #408DD2;
 }
 
 div.search-inputs{
@@ -81,11 +121,22 @@ div.search-form label{
     width:max-content;
 }
 
-div.search-form>[type="button"]{
+[type="button"]{
     width:10em;
     height:2em;
     align-self: flex-end;
     margin-top:1em;
+    border-radius: .5em;
+
+}
+
+div.search-form [type="text"],div.search-form [type="number"]{
+    background-color: #ACE5EE;
+    color:#224eb3
+}
+
+.promos{
+    margin:0 2em;
 }
 
 .promo{
@@ -93,7 +144,7 @@ div.search-form>[type="button"]{
     gap: 1em;
     grid-template-columns: 10em 1fr;
     grid-template-rows: 1em 1fr 2em;
-    margin-bottom:1em;
+    margin:1em;
     padding-right: 1em;
 }
 
@@ -103,7 +154,33 @@ div.search-form>[type="button"]{
     width:10em;
 }
 
-.promo>input[type="button"]{
-    width:10em;
-    height: 2em;
+footer{
+    display: flex;
+    justify-content: space-around;
+    background-color: #043A6B;
+}
+
+input{
+    border: 0;
+}
+
+.subscribe-on-closed-promo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2em;
+    background-color: #679FD2;
+}
+
+.navigation-links{
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation-links li:first-child{
+    margin: 0;
+}
+
+.navigation-links li{
+    margin-left:1em;
 }
