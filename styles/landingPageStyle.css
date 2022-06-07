@@ -1,14 +1,15 @@
-/* *{
-    border:1px solid black;
-} */
 body{
     padding: 0;
     margin:0;
     display: flex;
     flex-direction: column;
-    background:linear-gradient(#ACE5EE,#2271B3);
+    background:linear-gradient(#ACE5EE,#2271B3) no-repeat;
     font-family: Helvetica;
     color:	#ACE5EE;
+}
+
+input[type="text"],input[type="number"]{
+    border-radius: .2em;
 }
 
 ul{
@@ -28,12 +29,6 @@ input{
 }
 
 main{
-    width: 98vw;
-    max-width: 65em;
-    align-self: center; 
-}
-
-footer{
     width: 98vw;
     max-width: 65em;
     align-self: center; 
@@ -61,10 +56,15 @@ ul.navigation{
     flex-direction: row;
     justify-content: flex-end;
     align-self: center;
-    float:right;
     background-image: linear-gradient(45deg,#6212b7,#224eb3);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.organization-name{
+    color: #00248f;
+    font-size: 2em;
+    font-weight: 10em;
 }
 
 ul.navigation>li{
@@ -76,19 +76,26 @@ ul.navigation>li:last-child{
 }
 
 .form-description{
-    background: url(images/scale_1200.jpg);
+    background: url(images/scale_1200.jpg) no-repeat;
+    background-size: 100% auto;
+    color:#00248f;
+}
+
+.form-content{
+    width: 98vw;
+    max-width: 65em;
+    align-self: center; 
+    margin:0 auto;
 }
 
 .description{
     margin:0 2em;
-    background-image: linear-gradient(90deg,#00248f 65%,#ACE5EE);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .principles{
     display: grid;
     grid-template-columns: repeat(3,1fr);
+    gap: 1em;
 }
 
 .principles li{
@@ -96,6 +103,8 @@ ul.navigation>li:last-child{
     flex-direction: column;
     justify-content:center;
     align-items:center;
+    text-align: center;
+    background-color: rgba(255,255,255,0.2);
 }
 
 .principle-image{
@@ -104,6 +113,7 @@ ul.navigation>li:last-child{
 
 .principles-description{
     width:40em;
+    background-color: rgba(255,255,255,0.4);
 }
 
 .trust{
@@ -115,7 +125,6 @@ ul.navigation>li:last-child{
     display:flex;
     flex-direction: column;
     justify-content: space-between;
-    color:#00248f;
 }
 
 div.search-inputs{
@@ -176,11 +185,6 @@ div.search-form label{
     color:antiquewhite
 }
 
-div.search-form [type="text"],div.search-form [type="number"]{
-    background-color: #ACE5EE;
-    color:#224eb3
-}
-
 .promos{
     margin:0 2em;
 }
@@ -210,9 +214,16 @@ div.search-form [type="text"],div.search-form [type="number"]{
 }
 
 footer{
+    background-color: #043A6B;
+}
+
+.footer-content{
+    margin:0 auto;
     display: flex;
     justify-content: space-around;
-    background-color: #043A6B;
+    width: 98vw;
+    max-width: 65em;
+    align-self: center; 
 }
 
 .navigation-links{
@@ -226,4 +237,8 @@ footer{
 
 .navigation-links li{
     margin-left:1em;
+}
+
+footer a{
+    color:#ACE5EE;
 }

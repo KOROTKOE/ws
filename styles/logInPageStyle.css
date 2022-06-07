@@ -1,0 +1,30 @@
+.login-form{
+    width:100vw;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+label{
+    color:#043A6B;
+}
+
+h2{
+    color:#043A6B;
+}
+
+.form{
+    background-color: #ACE5EE;
+    box-shadow: 0 0 1em #043A6B;
+    margin:10vh;
+    border-radius: 1em;
+    padding:2.5em;
+}
+
+.form-content{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1em;
+    width:70vw;
+}
