@@ -1,47 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/landingPageStyle.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="styles/mainPageStyle.css" />
+    <link rel="stylesheet" href="styles/logInPageStyle.css" />
+  </head>
+  <body>
     <div class="login-form">
-        <div class="form">
-            <h2>Регистрация</h2>
-            <form class="form-content">
-                <label for="name">Имя</label>
-                <input type="text" placeholder="Имя" id="name">
-                <label for="surname">Фамилия</label>
-                <input type="text" placeholder="Фамилия" id="surname">
-                <label for="document-number">Номер документа</label>
-                <input type="text" placeholder="Номер документа" id="document-number">
-                <label for="phone-number">Телефон</label>
-                <input type="text" placeholder="Телефон" id="phone-number">
-                <label for="password">Пароль</label>
-                <input type="text" placeholder="Пароль" id="password">
-                <label for="double-password">Повтор пароля</label>
-                <input type="text" placeholder="Повтор пароля" id="double-password">
-                <input type="button" value="Регистрация" onclick="alert('Вы зарегистрированы!');window.location.href='landingPage.html'">
-            </form>
-        </div>
-        <footer>
-            <di class="footer-content">
-                <p>Номер телефона компании: 8 (800) 100-10-10
-                </p>
-                    <ul class="navigation-links">
-                        <li><a href="landingPage.html">Home</a></li>
-                        <li><a href="">Login</a></li>
-                        <li><a href="">Sign up</a></li>
-                        <li><a href="">Contact</a></li>
-                        <li><a href="">News</a></li>
-                        <li><a href="javascript:history.back()">Return</a></li>
-                        <li><a href="">Feedback</a></li>
-                    </ul>
-            </di>
-        </footer>
+      <div class="form">
+        <h2>Вход</h2>
+        <form class="form-content">
+          <label for="phone-number">Телефон</label>
+          <input type="text" placeholder="Телефон" id="phone-number" />
+          <label for="password">Пароль</label>
+          <input type="text" placeholder="Пароль" id="password" />
+          <input
+            type="button"
+            value="Вход"
+            onclick="alert('Вы зашли!');window.location.href='landingPage.html'"
+          />
+        </form>
+      </div>
+      <footer>
+        <di class="footer-content">
+          <p>Номер телефона компании: 8 (800) 100-10-10</p>
+          <ul class="navigation-links">
+            <li><a href="landingPage.html">Home</a></li>
+            <li><a href="logInPage.html">Login</a></li>
+            <li><a href="signUpPage.html">Sign up</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="">News</a></li>
+            <li><a href="javascript:history.back()">Return</a></li>
+            <li><a href="">Feedback</a></li>
+          </ul>
+        </di>
+      </footer>
     </div>
-</body>
+  </body>
 </html>

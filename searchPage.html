@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search</title>
+    <link rel="stylesheet" href="styles/mainPageStyle.css" />
+    <link rel="stylesheet" href="styles/searchPageStyle.css" />
+  </head>
+  <body>
+    <div class="search-result">
+      <h2>Результат поиска</h2>
+      <table class="result-table">
+        <tr>
+          <th>Номер рейса</th>
+          <th>Автобус</th>
+          <th>Дата отправления</th>
+          <th>Время отправления</th>
+          <th>Время прибытия</th>
+          <th>Время в пути</th>
+          <th>Стоимость</th>
+          <th>Вероятность отправления</th>
+          <th>Выбор</th>
+        </tr>
+        <tr id="record-1">
+          <td>1</td>
+          <td>Газель</td>
+          <td>25.01.20</td>
+          <td>15:12</td>
+          <td>22:45</td>
+          <td>7:33</td>
+          <td>25000</td>
+          <td>
+            <div class="likelihood">
+              <div class="full-progress">
+                <div class="progress"></div>
+              </div>
+              <div class="procent">100%</div>
+            </div>
+          </td>
+          <td><input type="checkbox" /></td>
+        </tr>
+        <tr id="record-2">
+          <td>2</td>
+          <td>Газель</td>
+          <td>26.01.20</td>
+          <td>15:12</td>
+          <td>22:45</td>
+          <td>7:33</td>
+          <td>25000</td>
+          <td>
+            <div class="likelihood">
+              <div class="full-progress">
+                <div class="progress"></div>
+              </div>
+              <div class="procent">50%</div>
+            </div>
+          </td>
+          <td><input type="checkbox" /></td>
+        </tr>
+      </table>
+      <input
+        type="button"
+        value="Бронировать"
+        onclick="alert('Выбор сделан!');window.location.href='bookingPage.html'"
+      />
+    </div>
+    <footer>
+      <di class="footer-content">
+        <p>Номер телефона компании: 8 (800) 100-10-10</p>
+        <ul class="navigation-links">
+          <li><a href="landingPage.html">Home</a></li>
+          <li><a href="logInPage.html">Login</a></li>
+          <li><a href="signUpPage.html">Sign up</a></li>
+          <li><a href="">Contact</a></li>
+          <li><a href="">News</a></li>
+          <li><a href="javascript:history.back()">Return</a></li>
+          <li><a href="">Feedback</a></li>
+        </ul>
+      </di>
+    </footer>
+  </body>
+</html>

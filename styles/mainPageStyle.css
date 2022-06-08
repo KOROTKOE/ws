@@ -1,0 +1,244 @@
+body{
+    padding: 0;
+    margin:0;
+    display: flex;
+    flex-direction: column;
+    background:linear-gradient(#ACE5EE,#2271B3) no-repeat;
+    font-family: Helvetica;
+    color:	#ACE5EE;
+}
+
+[type="text"],[type="number"]{
+    border-radius: .2em;
+}
+
+ul{
+    padding: 0;
+}
+
+ul>li{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+input{
+    border: 0;
+}
+
+main{
+    width: 98vw;
+    max-width: 65em;
+    align-self: center; 
+}
+
+header{
+    width: 98vw;
+    max-width: 65em;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+div.logo{
+    background-image: url("images/логотип/Autobus.png");
+    background-repeat: no-repeat;
+    background-size: 6em auto;
+    width:6em;
+    height: 5em;
+}
+
+ul.navigation{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-self: center;
+    background-image: linear-gradient(45deg,#6212b7,#224eb3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.organization-name{
+    color: #00248f;
+    font-size: 2em;
+    font-weight: 10em;
+}
+
+ul.navigation>li{
+    padding-right:1em;
+}
+
+ul.navigation>li:last-child{
+    padding: 0;
+}
+
+.form-description{
+    background: url(images/scale_1200.jpg) no-repeat;
+    background-size: 100% auto;
+    color:#00248f;
+}
+
+.form-content{
+    width: 98vw;
+    max-width: 65em;
+    align-self: center; 
+    margin:0 auto;
+}
+
+.description{
+    margin:0 2em;
+}
+
+.principles{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1em;
+}
+
+.principles li{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    text-align: center;
+    background-color: rgba(255,255,255,0.2);
+}
+
+.principle-image{
+    width:10em;
+}
+
+.principles-description{
+    width:40em;
+    background-color: rgba(255,255,255,0.4);
+}
+
+.trust{
+    margin:0 2em
+}
+
+.search-form{
+    padding:0 5vw 1em;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+div.search-inputs{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    grid-template-areas: "o . ."
+                         "s do dp"
+                         "k . b";
+    gap:1em;
+}
+
+div.search-inputs>input{
+    height:2em;
+}
+
+#flight-from{
+    grid-area: o;
+}
+
+#flight-to{
+    grid-area: k;
+}
+
+#departure-date{
+    grid-area: do;
+}
+
+#back-date{
+    grid-area: dp;
+}
+
+#passanger-count{
+    grid-area: qw;
+}
+
+#bottom-arrow{
+    grid-area: s;
+    text-align: center;
+    font-size: 2em;
+}
+
+#search-button{
+    grid-area: b;
+}
+
+div.search-form label{
+    width:max-content;
+}
+
+[type="button"]{
+    width:10em;
+    height:2em;
+    align-self: flex-end;
+    margin-top:1em;
+    border-radius: .5em;
+    background-image: linear-gradient(90deg,#8B00FF,#1F75FE,#00FF00);
+    color:antiquewhite
+}
+
+.promos{
+    margin:0 2em;
+}
+
+.promotions{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:1em;
+}
+
+.promo{
+    display: grid;
+    gap:1em;
+}
+
+.promo-image{
+    grid-row-start: 1;
+    grid-row-end: 4;
+    width:10em;
+}
+
+.subscribe-on-closed-promo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2em;
+}
+
+footer{
+    background-color: #043A6B;
+}
+
+.footer-content{
+    margin:0 auto;
+    display: flex;
+    justify-content: space-around;
+    width: 98vw;
+    max-width: 65em;
+    align-self: center; 
+}
+
+.navigation-links{
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation-links li:first-child{
+    margin: 0;
+}
+
+.navigation-links li{
+    margin-left:1em;
+}
+
+footer a{
+    color:#ACE5EE;
+}

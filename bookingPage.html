@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flight booking</title>
+    <link rel="stylesheet" href="styles/mainPageStyle.css" />
+    <link rel="stylesheet" href="styles/bookingStyle.css">
+  </head>
+  <body>
+    <div class="form">
+        <h2>Информация о перевозке</h2>
+        <form class="form-content">
+          <label for="phone-number">Номер рейса</label>
+          <input type="text" placeholder="Номер рейса" id="phone-number" />
+          <label for="password">Название города отправления</label>
+          <input type="text" placeholder="Название города отправления" id="password" />
+          <label for="phone-number">Адрес отправления</label>
+          <input type="text" placeholder="Адрес отправления" id="phone-number" />
+          <label for="password">Дата отправления</label>
+          <input type="text" placeholder="Дата отправления" id="password" />
+          <label for="phone-number">Время отправления</label>
+          <input type="text" placeholder="Время отправления" id="phone-number" />
+          <label for="password">Название города назначения</label>
+          <input type="text" placeholder="Название города назначения" id="password" />
+          <label for="phone-number">Адрес назначения</label>
+          <input type="text" placeholder="Адрес назначения" id="phone-number" />
+          <label for="password">Время прибытия</label>
+          <input type="text" placeholder="Время прибытия" id="password" />
+          <label for="password">Стоимость</label>
+          <input type="number" placeholder="Стоимость" id="password" />
+        </form>
+        <h2>Пассажиры</h2>
+        <div class="passangers">
+            <h4>Пассажир</h4>
+            <form class="form-content">
+                <label for="name">Имя</label>
+                <input type="text" id="name" />
+                <label for="surname">Фамилия</label>
+                <input type="text" id="surname" />
+                <label for="birth-day">Дата рождения</label>
+                <input type="text" id="birth-day" />
+                <label for="document-number">Номер документа</label>
+                <input type="text" id="document-number" />
+            </form>
+        </div>
+        <br><label for="password">Итого</label>
+        <input type="text" id="password" />
+        <dib class="buttons">
+            <input type="button" value="Добавить пассажира" class="add-passenger">
+            <input type="button" value="Убрать пассажира" class="remove-passenger">
+            <input
+              type="button"
+              value="Забронировать"
+              onclick="alert('Забронировано!');window.location.href='landingPage.html'"
+            />
+        </dib>
+    </div>
+    <footer>
+      <di class="footer-content">
+        <p>Номер телефона компании: 8 (800) 100-10-10</p>
+        <ul class="navigation-links">
+          <li><a href="landingPage.html">Home</a></li>
+          <li><a href="logInPage.html">Login</a></li>
+          <li><a href="signUpPage.html">Sign up</a></li>
+          <li><a href="">Contact</a></li>
+          <li><a href="">News</a></li>
+          <li><a href="javascript:history.back()">Return</a></li>
+          <li><a href="">Feedback</a></li>
+        </ul>
+      </di>
+    </footer>
+    <script src="scripts/bookingScript.js"></script>
+  </body>
+</html>

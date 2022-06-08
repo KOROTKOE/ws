@@ -1,0 +1,55 @@
+body{
+    width:auto;
+    height:auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.search-result{
+    width: 90vw;
+    max-width: 65em;
+    align-self: center; 
+    color: #043A6B;
+    background-color: #ACE5EE;
+    box-shadow: 0 0 1em #043A6B;
+    margin:2.5em auto;
+    border-radius: 1em;
+    padding:2.5em;
+}
+
+.result-table{
+    text-align: center;
+}
+
+.full-progress{
+    position: relative;
+    width:auto;
+    height:1em;
+    background-color: #043A6B;
+    border: .2em solid #043A6B;
+}
+
+.progress{
+    height:1em;
+    background-color: #ACE5EE;
+    position: absolute;
+}
+
+#record-1 .progress{
+    width:100%;
+}
+
+#record-2 .progress{
+    width:50%;
+}
+
+input[type="checkbox"]{
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 10em;
+}

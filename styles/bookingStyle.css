@@ -1,4 +1,4 @@
-.login-form{
+body{
     width:auto;
     height:auto;
     min-height: 100vh;
@@ -8,12 +8,12 @@
 }
 
 .form{
-    color:#043A6B;
     background-color: #ACE5EE;
     box-shadow: 0 0 1em #043A6B;
     margin:2.5em auto;
     border-radius: 1em;
     padding:2.5em;
+    color: #043A6B;
 }
 
 .form-content{
@@ -21,4 +21,9 @@
     grid-template-columns: auto 1fr;
     gap: 1em;
     width:70vw;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
 }
