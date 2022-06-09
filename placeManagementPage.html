@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Places</title>
+    <link rel="stylesheet" href="styles/mainPageStyle.css">
+    <link rel="stylesheet" href="styles/placesStyle.css">
+</head>
+<body>
+    <div class="floors">
+        <div class="floor">
+            <h3>1 этаж</h3>
+            <div class="places">
+                <input type="button" class="place blocked booked" value="1">
+                <input type="button" class="place" value="2">
+                <input type="button" class="place" value="3">
+                <input type="button" class="place" value="4">
+                <input type="button" class="place" value="5">
+                <input type="button" class="place" value="6">
+                <input type="button" class="place blocked booked" value="7">
+                <input type="button" class="place" value="8">
+                <input type="button" class="place" value="9">
+                <input type="button" class="place" value="10">
+                <input type="button" class="place" value="11">
+                <input type="button" class="place" value="12">
+                <input type="button" class="place blocked booked" value="13">
+                <input type="button" class="place" value="14">
+                <input type="button" class="place blocked booked" value="15">
+                <input type="button" class="place" value="16">
+                <input type="button" class="place" value="17">
+                <input type="button" class="place blocked booked" value="18">
+                <input type="button" class="place blocked booked" value="19">
+                <input type="button" class="place" value="20">
+                <input type="button" class="place" value="21">
+                <input type="button" class="place" value="22">
+                <input type="button" class="place blocked booked" value="23">
+                <input type="button" class="place" value="24">
+            </div>
+        </div>
+        <div class="floor">
+            <h3>2 этаж</h3>
+            <div class="places">
+                <input type="button" class="place" value="25">
+                <input type="button" class="place" value="26">
+                <input type="button" class="place" value="27">
+                <input type="button" class="place" value="28">
+                <input type="button" class="place" value="29">
+                <input type="button" class="place" value="30">
+                <input type="button" class="place blocked booked" value="31">
+                <input type="button" class="place" value="32">
+                <input type="button" class="place" value="33">
+                <input type="button" class="place blocked booked" value="34">
+                <input type="button" class="place blocked booked" value="35">
+                <input type="button" class="place" value="36">
+                <input type="button" class="place" value="37">
+                <input type="button" class="place" value="38">
+                <input type="button" class="place blocked booked" value="39">
+                <input type="button" class="place" value="40">
+                <input type="button" class="place" value="41">
+                <input type="button" class="place" value="42">
+                <input type="button" class="place" value="43">
+                <input type="button" class="place blocked booked" value="44">
+                <input type="button" class="place blocked booked" value="45">
+                <input type="button" class="place blocked booked" value="46">
+                <input type="button" class="place" value="47">
+                <input type="button" class="place" value="48">
+            </div>
+        </div>
+    </div>
+    <input type="button" value="Выбрать" class="changed-button" onclick="alert('Выбор сделан'); window.location.href='landingPage.html'">
+    <footer>
+        <div class="footer-content">
+          <p>Номер телефона компании: 8 (800) 100-10-10</p>
+          <ul class="navigation-links">
+            <li><a href="landingPage.html">Home</a></li>
+            <li><a href="logInPage.html">Login</a></li>
+            <li><a href="signUpPage.html">Sign up</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="">News</a></li>
+            <li><a href="javascript:history.back()">Return</a></li>
+            <li><a href="">Feedback</a></li>
+          </ul>
+        </div>
+      </footer>
+    
+    <script>
+        document.querySelectorAll(".place").forEach((place)=>{
+            if(!place.classList.contains("blocked"))
+            place.onclick = ()=>place.classList.toggle("booked")
+        })
+    </script>
+</body>
+</html>

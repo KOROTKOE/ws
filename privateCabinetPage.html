@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Cabinet</title>
+    <link rel="stylesheet" href="styles/mainPageStyle.css">
+    <link rel="stylesheet" href="styles/privateCabinteStyle.css">
+</head>
+<body>
+    <div class="personal-form">
+        <h2>Личные данные</h2>
+        <img src="styles/images/логотип/blog-aller-en-vacances-d-hiver-en-bus.jpg" alt="" class="personal-icon" title="Иконка">
+        <div class="form-content">
+            <label for="name">Имя</label>
+            <input type="text" id="name" />
+            <label for="surname">Фамилия</label>
+            <input type="text" id="surname" />
+            <label for="flight-count">Количество круизов</label>
+            <input type="number" name="" id="flight-count">
+            <input type="button" value="Выйти из учетной записи" onclick="alert('Вы вышли!'); window.location.href='landingPage.html'">
+        </div>
+        <h2>Предстоящие круизы</h2>
+        <table>
+            <tr>
+                <th>Код бронирования</th>
+                <th>Дата отправления</th>
+                <th>Время отправления</th>
+                <th>Время прибытия</th>
+                <th>Адрес отправления</th>
+                <th>Адрес прибытия</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>28.02.22</td>
+                <td>15:25</td>
+                <td>22:36</td>
+                <td>Украина</td>
+                <td>Великобритания</td>
+            </tr>
+        </table>
+    </div>
+    <footer>
+        <div class="footer-content">
+          <p>Номер телефона компании: 8 (800) 100-10-10</p>
+          <ul class="navigation-links">
+            <li><a href="landingPage.html">Home</a></li>
+            <li><a href="logInPage.html">Login</a></li>
+            <li><a href="signUpPage.html">Sign up</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="">News</a></li>
+            <li><a href="javascript:history.back()">Return</a></li>
+            <li><a href="">Feedback</a></li>
+          </ul>
+        </div>
+      </footer>
+</body>
+</html>

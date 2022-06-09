@@ -176,7 +176,8 @@ div.search-form label{
 }
 
 [type="button"]{
-    width:10em;
+    min-width:10em;
+    width:auto;
     height:2em;
     align-self: flex-end;
     margin-top:1em;

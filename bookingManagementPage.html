@@ -4,16 +4,32 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flight booking</title>
+    <title>Book management</title>
     <link rel="stylesheet" href="styles/mainPageStyle.css" />
     <link rel="stylesheet" href="styles/bookingStyle.css" />
+    <link rel="stylesheet" href="styles/managementStyle.css" />
   </head>
   <body>
     <div class="form">
-      <h2>Информация о перевозке</h2>
+      <h2>Усправление бронированием</h2>
+      <h3>Информация о бронировании</h3>
+      <form class="form-content">
+        <label for="code">Код бронирования</label>
+        <input type="text" id="code" placeholder="Код бронирования" />
+        <label for="price">Стоимость бронирования</label>
+        <input type="text" id="price" placeholder="Стоимость бронирования" />
+      </form>
+      <h3>Информация об автобусной перевозке</h3>
       <form class="form-content">
         <label for="flight-number">Номер рейса</label>
-        <input type="text" placeholder="Номер рейса" id="flight-number" />
+        <input
+          type="text"
+          name=""
+          id="flight-number"
+          placeholder="Номер рейса"
+        />
+        <label for="bus">Автобус</label>
+        <input type="text" name="" id="bus" placeholder="Автобус" />
         <label for="country">Название города отправления</label>
         <input
           type="text"
@@ -39,11 +55,28 @@
           id="departure-address"
         />
         <label for="departure-time">Время прибытия</label>
-        <input type="text" placeholder="Время прибытия" id="departure-time" />
-        <label for="price">Стоимость</label>
-        <input type="number" placeholder="Стоимость" id="price" />
+        <input
+          type="text"
+          name=""
+          id="departure-time"
+          placeholder="Время прибытия"
+        />
+        <label for="time-in-road">Время в пути</label>
+        <input
+          type="text"
+          name=""
+          id="time-in-road"
+          placeholder="Время в пути"
+        />
+        <label for="departure">Вероятность отправления</label>
+        <div class="likelihood">
+          <div class="full-progress">
+            <div class="progress"></div>
+          </div>
+          <div class="procent">100%</div>
+        </div>
       </form>
-      <h2>Пассажиры</h2>
+      <h3>Информация о пассажирах</h3>
       <div class="passangers">
         <h4>Пассажир</h4>
         <form class="form-content">
@@ -55,23 +88,17 @@
           <input type="text" id="birth-day" />
           <label for="document-number">Номер документа</label>
           <input type="text" id="document-number" />
+          <label for="place-there">Место туда</label>
+          <input type="text" name="" id="place-there" />
+          <label for="place-back">Место обратно</label>
+          <input type="text" name="" id="place-back" />
         </form>
       </div>
-      <br /><label for="total">Итого</label>
-      <input type="text" id="total" />
-      <dib class="buttons">
-        <input type="button" value="Добавить пассажира" class="add-passenger" />
-        <input
-          type="button"
-          value="Убрать пассажира"
-          class="remove-passenger"
-        />
-        <input
-          type="button"
-          value="Забронировать"
-          onclick="alert('Забронировано!');window.location.href='bookingManagementPage.html'"
-        />
-      </dib>
+      <br /><input
+        type="button"
+        value="Выбрать места"
+        onclick="alert('Места выбраны');window.location.href='placeManagementPage.html'"
+      />
     </div>
     <footer>
       <div class="footer-content">
@@ -87,6 +114,5 @@
         </ul>
       </div>
     </footer>
-    <script src="scripts/bookingScript.js"></script>
   </body>
 </html>

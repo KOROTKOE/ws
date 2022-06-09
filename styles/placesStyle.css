@@ -1,0 +1,62 @@
+body{
+    width:auto;
+    height:auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.floors{
+    width:auto;
+    height:auto;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:1em;
+    color: #043A6B;
+}
+
+.floor{
+    background-color: #ACE5EE;
+    box-shadow: 0 0 1em #043A6B;
+    margin:2.5em auto 1em;
+    border-radius: 1em;
+    width:20em;
+    height:auto;
+    text-align: center;
+    padding:2em;
+}
+
+.places{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 1em;
+}
+
+.place:nth-child(4n + 3){
+    grid-column-start: 4;
+    grid-column-end: 4;
+}
+
+input[type="button"].place{
+    color: #043A6B;
+    background: #ACE5EE;
+    width:auto;
+    height:2em;
+    padding:0;
+    margin:0;
+}
+
+input[type="button"].booked.blocked{
+    color: #ACE5EE;
+    background-color: #043A6B;
+}
+
+input[type="button"].booked{
+    color: #ACE5EE;
+    background-color: #4682B4;
+}
+
+.changed-button{
+    margin:0 auto 1em;
+}

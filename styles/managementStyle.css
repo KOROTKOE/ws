@@ -1,0 +1,19 @@
+.full-progress{
+    position: relative;
+    width:80%;
+    height:1em;
+    background-color: #043A6B;
+    border: .2em solid #043A6B;
+}
+
+.likelihood{
+    display: flex;
+    justify-content: space-between;
+}
+
+.progress{
+    height:1em;
+    background-color: #ACE5EE;
+    position: absolute;
+    width:100%;
+}

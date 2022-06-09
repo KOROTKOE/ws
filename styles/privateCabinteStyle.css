@@ -7,7 +7,7 @@ body{
     justify-content: space-between;
 }
 
-.form{
+.personal-form{
     background-color: #ACE5EE;
     box-shadow: 0 0 1em #043A6B;
     margin:2.5em auto;
@@ -23,11 +23,11 @@ body{
     width:70vw;
 }
 
-.buttons{
-    display: flex;
-    justify-content: space-between;
+.personal-icon{
+    width:10em;
+    margin-bottom:1em;
 }
 
-[type="button"]{
-    width:auto;
+table{
+    text-align: center;
 }

@@ -16,8 +16,8 @@ document.querySelector(".add-passenger").addEventListener("click",()=>{
     h2.textContent="Пассажир"
     document.querySelector("div.passangers").append(h2);
     document.querySelector("div.passangers").append(form);
-    totalPrice();
     count++;
+    totalPrice();
 });
 
 function createInput(id){
@@ -35,13 +35,13 @@ function createLabel(id,text){
 }
 
 function totalPrice(){
-    document.querySelector("")
+    document.querySelector("#total").value = document.querySelector("#price").value*count;
 }
 
 document.querySelector(".remove-passenger").addEventListener("click",()=>{
     if(count===1)return;
     document.querySelector("div.passangers").lastChild.remove();
     document.querySelector("div.passangers").lastChild.remove();
-    totalPrice();
     count--;
+    totalPrice();
 });
