@@ -75,27 +75,37 @@ ul.navigation>li:last-child{
     padding: 0;
 }
 
-.form-description{
-    background: url(images/scale_1200.jpg) no-repeat;
-    background-size: 100% auto;
-    color:#00248f;
-}
-
 .form-content{
     width: 98vw;
     max-width: 65em;
     align-self: center; 
-    margin:0 auto;
+    margin:0 auto 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.form-description{
+    background: url(images/scale_1200.jpg) no-repeat;
+    background-size: 100vw auto;
+    color:#043A6B;
 }
 
 .description{
     margin:0 2em;
+    padding: 0 1em;
+    position:relative;
+    background: hsla(0, 0%, 100%, .6);
+    overflow: hidden;
+    box-shadow: 0 0 .5em black;
+    border-radius: 1em;;
 }
 
 .principles{
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 1em;
+    margin-bottom:0;
 }
 
 .principles li{
@@ -104,7 +114,6 @@ ul.navigation>li:last-child{
     justify-content:center;
     align-items:center;
     text-align: center;
-    background-color: rgba(255,255,255,0.2);
 }
 
 .principle-image{
@@ -113,7 +122,6 @@ ul.navigation>li:last-child{
 
 .principles-description{
     width:40em;
-    background-color: rgba(255,255,255,0.4);
 }
 
 .trust{
@@ -125,6 +133,7 @@ ul.navigation>li:last-child{
     display:flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-bottom:auto;
 }
 
 div.search-inputs{
@@ -176,14 +185,21 @@ div.search-form label{
 }
 
 [type="button"]{
-    min-width:10em;
+    min-width: 10em;
     width:auto;
+    max-width: 10em;
     height:2em;
     align-self: flex-end;
     margin-top:1em;
     border-radius: .5em;
-    background-image: linear-gradient(90deg,#8B00FF,#1F75FE,#00FF00);
-    color:antiquewhite
+    background-image: linear-gradient(90deg,#E3EEFF,#2B79B7);
+    color:#043A6B;
+    float:right;
+}
+
+.subscribe-btn{
+    clear: right;
+    margin:0 1em;
 }
 
 .promos{

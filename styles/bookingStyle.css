@@ -27,7 +27,3 @@ body{
     display: flex;
     justify-content: space-between;
 }
-
-[type="button"]{
-    width:auto;
-}

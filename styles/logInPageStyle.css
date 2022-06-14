@@ -22,3 +22,9 @@
     gap: 1em;
     width:70vw;
 }
+
+[type="button"]{
+    grid-column-start: 2;
+    width: 10em;
+    margin-left: auto;
+}
