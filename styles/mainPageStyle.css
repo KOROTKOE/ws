@@ -187,7 +187,7 @@ div.search-form label{
 [type="button"]{
     min-width: 10em;
     width:auto;
-    max-width: 10em;
+    max-width: fit-content;
     height:2em;
     align-self: flex-end;
     margin-top:1em;
@@ -195,6 +195,10 @@ div.search-form label{
     background-image: linear-gradient(90deg,#E3EEFF,#2B79B7);
     color:#043A6B;
     float:right;
+}
+
+[type="button"]:hover{
+    background-image: linear-gradient(90deg,#d5e4fb,#246499);
 }
 
 .subscribe-btn{

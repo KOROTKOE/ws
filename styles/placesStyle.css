@@ -38,6 +38,10 @@ body{
     grid-column-end: 4;
 }
 
+.places>[type="button"]{
+    max-width: 4em;
+}
+
 input[type="button"].place{
     color: #043A6B;
     background: #ACE5EE;
@@ -53,6 +57,11 @@ input[type="button"].booked.blocked{
 }
 
 input[type="button"].booked{
+    color: #ACE5EE;
+    background-color: #4682B4;
+}
+
+.floor input[type="button"]:hover{
     color: #ACE5EE;
     background-color: #4682B4;
 }
