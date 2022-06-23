@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Park</title>
+    <link rel="icon" href="styles/images/логотип/741411.ico">
+    <link rel="stylesheet" href="styles/mainPageStyle.css">
+</head>
+<body>
+    <header>
+        <div class="logo"></div>
+        <p class="organization-name">Landing Park</p>
+        <ul class="navigation">
+            <li><a href="#">Акции</a></li>
+            <li><a href="searchPage.html">Поиск</a></li>
+            <li><a href="bookingPage.html">Регистрация на рейс</a></li>
+            <li><a href="privateCabinetPage.html">Личный кабинет</a></li>
+        </ul>
+    </header>
+    <div class="form-description">
+        <div class="form-content">
+            <div class="search-form">
+                <h2>Форма для поиска</h2>
+                <div class="search-inputs">
+                    <input type="text" name="from" id="flight-from" placeholder="Откуда">
+                    <div id="bottom-arrow">&#8595</div>
+                    <input type="number" max="8" min="1" name="passanger-count" id="count-of-passanger-in-bus" placeholder="Количество пассажиров">
+                    <input type="text" name="from-date" id="departure-date" placeholder="Дата отправления">
+                    <input type="text" name="reverse-date" id="back-date" placeholder="Дата прибытия">
+                    <input type="text" name="to" id="flight-to" placeholder="Куда">
+                    <input type="button" value="Поиск" id = "search-button" onclick="window.location.href='searchPage.html'">
+                </div>
+            </div>
+            <div class="description">
+                <h2>Принципы бронирования нашей компании</h2>
+                <p class="principles-description">
+                    При бронировании в нашей компании у Вас есть возможность сохранить при себе деньги, при условии оплаты багажа.
+                </p>
+                <ul class="principles">
+                    <li>
+                        <img src="styles/images/ComfortClass_Setra_Busses.jpg" class="principle-image">
+                        <p>Есть возможность выбора даты</p>
+                    </li>
+                    <li>
+                        <img src="styles/images/2560x1600_1455055_[www.ArtFile.ru].jpg" class="principle-image">
+                        <p>Можно устанавливать количество броней</p>
+                    </li>
+                    <li>
+                        <img src="styles/images/WhatsApp_Image_2019-.jpeg" class="principle-image">
+                        <p>Есть возможность получить вероятность отправления в реальном времени</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <main>
+        <div class="trust">
+            <h2>Вы можете доверять нам</h2>
+            <p>
+                Мы работаем с 1945 года и не имеем ни одного отрицательного отзыва.
+                При отмене рейса мы заранее предупредим и предоставим подходящие рейсы.
+                Если вы откажетесь от поездки то мы вернем деньги.
+                Чтобы связаться с нами, вы можете позвонить к нам по номеру 8 (800) 100-10-10 или можете написать письмо на наш e-mail example@gmail.com 
+            </p>
+        </div>
+        <div class="promos">
+            <h2>Акции</h2>
+            <ul class="promotions">
+                <li class="promo">
+                    <img src="./styles/images/EA8_FH8W4AE8Bm7.jpg" alt="Tickets" class="promo-image">
+                    <div class="name">Returning and Changing Your Tickets</div>
+                    <div class="short-description">The pandemic has changed many travelers’ plans, but we know that it will not last forever. 
+                        Once all of this is over, we will continue exploring this world the way we used to. 
+                        Special rules that have been developed for this challenging situation will help you cancel your trip
+                        or postpone it until later.</div>
+                    <input type="button" value="Просмотр">
+                </li>
+                <li class="promo">
+                    <img src="./styles/images/bus.jpg" alt="Tickets" class="promo-image">
+                    <div class="name">Best offers</div>
+                    <div class="short-description">To see again the streets that witnessed so much. To hug your beloved ones and look back to see
+                        what you’ve come through. And to think of new dreams that will be so special!</div>
+                    <input type="button" value="Просмотр">
+                </li>
+                <li class="promo">
+                    <img src="./styles/images/Cyg2iLTWQAA44Sa.jpg_large.jpg" alt="Tickets" class="promo-image">
+                    <div class="name">See you more often</div>
+                    <div class="short-description">Since the beginning of the summer season, we are expanding the geography of cruises in Russia so that you can see all the beauty and grandeur of the Volga River. Choose our company to enjoy the magnificent scenery and spend your vacation in nature.</div>
+                    <input type="button" value="Просмотр">
+                </li>
+                <li class="promo">
+                    <img src="./styles/images/korporativnye-poezdki.jpg" alt="Tickets" class="promo-image">
+                    <div class="name">Group discounts </div>
+                    <div class="short-description">Regardless of how large your group is and what kind of event you are planning, a cruise is exactly what will suit you. A meeting with family and friends, the anniversary of the company, a professional holiday - everything will be successful if a snow-white motor ship becomes the platform, and unique river landscapes are the scenery.</div>
+                    <input type="button" value="Просмотр">
+                </li>
+            </ul>
+        </div>
+        <div class="subscribe-on-closed-promo">
+            <h2>Подпишись на нас</h2>
+            <div class="e-mail">
+                <label for="subscribe-e-mail">Ваша почта</label>
+                <input type="text" name="e-mail" id="subscribe-e-mail" title="Электронная почта" placeholder="example@mail.ru">
+                <input type="button" value="Подписаться" class="subscribe-btn">
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p>Номер телефона компании: 8 (800) 100-10-10
+            </p>
+                <ul class="navigation-links">
+                    <li><a href="landingPage.html">Home</a></li>
+                    <li><a href="logInPage.html">Login</a></li>
+                    <li><a href="signUpPage.html">Sign up</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="">News</a></li>
+                    <li><a href="javascript:history.back()">Return</a></li>
+                    <li><a href="">Feedback</a></li>
+                </ul>
+        </div>
+    </footer>
+    <script src="scripts/landingPage.js"></script>
+</body>
+</html>

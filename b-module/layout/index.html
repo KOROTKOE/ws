@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <img
+            src="assets/images/logo.png"
+            class="logo test-0-logo"
+            alt="logo"
+          />
+
+          <div class="navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link test-0-nav-1" href="#">Promotions</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link test-0-nav-2" href="#">Search</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link test-0-nav-3" href="#">Check-in</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link test-0-nav-4" href="login.html"
+                  >Personal area</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container" v-if="page === 'main'">
+        <section class="mt-5">
+          <h2 class="mb-4">Search for bus flights</h2>
+
+          <form action="search.html" @submit.prevent="findFlights">
+            <div class="row">
+              <div class="col-12 col-sm-6 col-lg-4 col-xl-3 pr-lg-0">
+                <input
+                  type="text"
+                  class="form-control test-0-fd w-100"
+                  v-model="forms.busSearch.from"
+                  placeholder="From where:"
+                  :class="{'is-invalid':errors.busSearch.from}"
+                />
+                <div class="invalid-feedback">{{errors.busSearch.from}}</div>
+              </div>
+              <div
+                class="col-12 col-sm-6 col-lg-4 mt-3 col-xl-3 mt-sm-0 pr-lg-0"
+              >
+                <input
+                  type="text"
+                  class="form-control test-0-fa w-100"
+                  v-model="forms.busSearch.to"
+                  placeholder="To  where:"
+                  :class="{'is-invalid':errors.busSearch.to}"
+                />
+                <div class="invalid-feedback">{{errors.busSearch.to}}</div>
+              </div>
+              <div
+                class="col-12 col-sm-6 col-lg-2 mt-3 col-xl-2 mt-lg-0 pr-lg-0"
+              >
+                <input
+                  type="text"
+                  class="form-control test-0-fdt"
+                  v-model="forms.busSearch.date1"
+                  placeholder="Departing:"
+                  :class="{'is-invalid':errors.busSearch.date1}"
+                />
+                <div class="invalid-feedback">{{errors.busSearch.date1}}</div>
+              </div>
+              <div
+                class="col-12 col-sm-6 col-lg-2 mt-3 col-xl-2 mt-lg-0 pr-xl-0"
+              >
+                <input
+                  type="text"
+                  class="form-control test-0-fat"
+                  v-model="forms.busSearch.date2"
+                  placeholder="Returning:"
+                  :class="{'is-invalid':errors.busSearch.date2}"
+                />
+                <div class="invalid-feedback">{{errors.busSearch.date2}}</div>
+              </div>
+              <div
+                class="col-12 col-sm-6 col-lg-2 mt-3 col-xl-1 mt-lg-0 pr-xl-0"
+              >
+                <select
+                  class="form-control test-0-fnp"
+                  v-model="forms.busSearch.passengers"
+                  placeholder="Passengers:"
+                  :class="{'is-invalid':errors.busSearch.passengers}"
+                >
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+                <div class="invalid-feedback">
+                  {{errors.busSearch.passengers}}
+                </div>
+              </div>
+              <div class="col-12 col-xl-1 px-2 mt-3 mt-xl-0">
+                <button class="btn btn-success form-control test-0-fbs">
+                  Search
+                </button>
+              </div>
+            </div>
+          </form>
+        </section>
+
+        <section class="mt-5">
+          <h2 class="mb-4">Promotions</h2>
+
+          <div class="row">
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="card">
+                <img
+                  src="assets/images/placeholder.jpg"
+                  class="card-img-top test-0-ai"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title test-0-an">Promotion 1</h5>
+                  <p class="card-text test-0-ad">Promotion text</p>
+                  <a href="#" class="btn btn-primary test-0-abm">More</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="card">
+                <img
+                  src="assets/images/placeholder.jpg"
+                  class="card-img-top test-0-ai"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title test-0-an">Promotion 1</h5>
+                  <p class="card-text test-0-ad">Promotion text</p>
+                  <a href="#" class="btn btn-primary test-0-abm">More</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="card">
+                <img
+                  src="assets/images/placeholder.jpg"
+                  class="card-img-top test-0-ai"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title test-0-an">Promotion 1</h5>
+                  <p class="card-text test-0-ad">Promotion text</p>
+                  <a href="#" class="btn btn-primary test-0-abm">More</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="card">
+                <img
+                  src="assets/images/placeholder.jpg"
+                  class="card-img-top test-0-ai"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title test-0-an">Promotion 1</h5>
+                  <p class="card-text test-0-ad">Promotion text</p>
+                  <a href="#" class="btn btn-primary test-0-abm">More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mt-5">
+          <h2 class="mb-4">Subscribe</h2>
+
+          <form action="#">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <input
+                  type="email"
+                  class="form-control test-0-sie"
+                  placeholder="example@domain.com"
+                />
+              </div>
+              <div class="col-12 col-md-6">
+                <button class="btn btn-success w-100 test-0-sbs">
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <div class="container" v-if="page === 'flights'">
+        <section class="mt-5">
+          <div class="d-flex justify-content-between align-items-start">
+            <h2 class="mb-4">We found the following bus flights</h2>
+            <a class="btn btn-sm btn-secondary test-4-bback">Back</a>
+          </div>
+
+          <div>
+            <h5 class="mt-4 mb-3">
+              <span class="test-4-fif1">Cheboksary</span>
+              ->
+              <span class="test-4-fit1">Kazan</span>
+            </h5>
+            <table class="table table-hover table-bordered">
+              <tr>
+                <th>Flight</th>
+                <th>Bus</th>
+                <th>Date and time of departure</th>
+                <th>Arrival time</th>
+                <th>Bus time</th>
+                <th>Cost</th>
+              </tr>
+              <tr
+                v-for="flight of forms.flights.flights_to"
+                :class="{'selected':flight == forms.selectedFlights.to}"
+                @click="selectFlight(flight,'to')"
+              >
+                <td class="test-4-fn">{{flight.flightCode}}</td>
+                <td class="test-4-at">{{flight.busName}}</td>
+                <td>
+                  <span class="test-4-dd">{{flight.dateDeparture}}</span>
+                  at
+                  <span class="test-4-dt">{{flight.timeDeparture}}</span>
+                </td>
+                <td class="test-4-aatime">{{flight.arrivalTime}}</td>
+                <td class="test-4-ft">
+                  <span class="test-4-fhour">{{flight.hour}}</span>h
+                  <span class="test-4-fminutes">{{flight.min}}</span>min
+                </td>
+                <td class="test-4-fp">{{flight.cost}}</td>
+              </tr>
+            </table>
+          </div>
+
+          <div v-if="forms.busSearch.date2">
+            <h5 class="mt-4 mb-3">
+              <span class="test-4-fif2">Kazan</span>
+              ->
+              <span class="test-4-fit2">Cheboksary</span>
+            </h5>
+            <table
+              class="table table-hover table-bordered"
+              v-if="forms.flights.flights_back.length"
+            >
+              <tr>
+                <th>Flight</th>
+                <th>Bus</th>
+                <th>Date and time of departure</th>
+                <th>Arrival time</th>
+                <th>Bus time</th>
+                <th>Cost</th>
+              </tr>
+              <tr
+                v-for="flight of forms.flights.flights_back"
+                :class="{'selected':flight == forms.selectedFlights.back}"
+                @click="selectFlight(flight,'back')"
+              >
+                <td class="test-4-fn">{{flight.flightCode}}</td>
+                <td class="test-4-at">{{flight.busName}}</td>
+                <td>
+                  <span class="test-4-dd">{{flight.dateDeparture}}</span>
+                  at
+                  <span class="test-4-dt">{{flight.timeDeparture}}</span>
+                </td>
+                <td class="test-4-aatime">{{flight.arrivalTime}}</td>
+                <td class="test-4-ft">
+                  <span class="test-4-fhour">{{flight.hour}}</span>h
+                  <span class="test-4-fminutes">{{flight.min}}</span>min
+                </td>
+                <td class="test-4-fp">{{flight.cost}}</td>
+              </tr>
+            </table>
+          </div>
+
+          <a class="btn btn-primary test-4-bgobook mt-4" @click="goToBooking"
+            >Go to booking</a
+          >
+        </section>
+      </div>
+
+      <div class="container" v-if="page === 'booking'">
+        <section class="mt-5">
+          <div class="d-flex justify-content-between align-items-start">
+            <h2 class="mb-4">Booking</h2>
+            <a
+              @click="backToMain"
+              class="btn btn-sm btn-secondary test-5-bgoback"
+              >Back</a
+            >
+          </div>
+
+          <div class="d-flex justify-content-between align-items-baseline mb-4">
+            <h4>Information about the bus flight</h4>
+          </div>
+
+          <table class="table table-hover table-bordered">
+            <tr>
+              <th>Flight</th>
+              <th>From where</th>
+              <th>Date and time of departure</th>
+              <th>To where</th>
+              <th>Flight time</th>
+              <th>Cost</th>
+            </tr>
+            <tr v-for="flight in forms.selectedFlights">
+              <td class="test-5-fc">{{flight.flightCode}}</td>
+              <td>
+                <span class="test-5-from-cn">{{flight.countryFrom}}</span>,
+                <span class="test-5-from-an">{{flight.stationNameFrom}}</span>
+              </td>
+              <td>
+                <span class="test-5-dd">{{flight.dateDeparture}}</span>
+                at
+                <span class="test-5-dt">{{flighttimeDeparture}}</span>
+              </td>
+              <td class="test-5-to">
+                <span class="test-5-to-cn">{{flight.countryTo}}</span>,
+                <span class="test-5-to-an">{{flight.stationNameTo}}</span>
+              </td>
+              <td class="test-5-at">{{flight.arrivalTime}}</td>
+              <td class="test-5-fp">{{flight.cost}}</td>
+            </tr>
+            <tr>
+              <td colspan="5" class="text-right">
+                <b>Total cost</b>
+              </td>
+              <td colspan="1" class="text-right test-5-price">
+                {{getSelectedSum()}}
+              </td>
+            </tr>
+          </table>
+        </section>
+
+        <section class="mt-5">
+          <div class="d-flex justify-content-between align-items-baseline mb-4">
+            <h4>Passengers</h4>
+            <button class="btn btn-primary btn-sm test-5-add">
+              Add passenger
+            </button>
+          </div>
+
+          <form action="booking_management.html">
+            <div class="row">
+              <div class="col-12 col-sm-6 col-lg-4 col-xl-3 pr-lg-0">
+                <input
+                  type="text"
+                  class="form-control test-5-name w-100"
+                  placeholder="First name"
+                />
+              </div>
+              <div
+                class="col-12 col-sm-6 col-lg-4 mt-3 col-xl-3 mt-sm-0 pr-lg-0"
+              >
+                <input
+                  type="text"
+                  class="form-control test-5-last w-100"
+                  placeholder="Last name"
+                />
+              </div>
+              <div
+                class="col-12 col-sm-6 col-lg-2 mt-3 col-xl-2 mt-lg-0 pr-lg-0"
+              >
+                <input
+                  type="text"
+                  class="form-control test-5-dob"
+                  placeholder="Date of Birth"
+                />
+              </div>
+              <div
+                class="col-12 col-sm-6 col-lg-2 mt-3 col-xl-2 mt-lg-0 pr-xl-0"
+              >
+                <input
+                  type="text"
+                  class="form-control test-5-doc"
+                  placeholder="Document number"
+                />
+              </div>
+              <div class="col-12 col-xl-2 mt-3 mt-xl-0">
+                <button
+                  class="btn btn-danger btn-sm form-control test-5-bremove"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+
+            <button class="btn btn-success mt-4 form-control test-5-book">
+              Confirm
+            </button>
+          </form>
+        </section>
+      </div>
+
+      <footer class="mt-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-3">
+              <span class="test-0-phone">8 (800) 100-10-10</span>
+            </div>
+            <div class="col-7 offset-2">
+              <div class="d-flex justify-content-between">
+                <a href="http://xxxxxx-m1.wsr.ru">Home</a>
+                <a href="http://xxxxxx-m1.wsr.ru/login">Log in</a>
+                <a href="http://xxxxxx-m1.wsr.ru/register">Registration</a>
+                <a href="http://xxxxxx-m1.wsr.ru/contact">Contact</a>
+                <a href="http://xxxxxx-m1.wsr.ru/news">News</a>
+                <a href="http://xxxxxx-m1.wsr.ru/return">Return</a>
+                <a href="http://xxxxxx-m1.wsr.ru/feedback">Feedback</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
