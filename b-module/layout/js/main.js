@@ -13,6 +13,7 @@ const app = new Vue({
       flights: {
         flights_to: [
           {
+            flightId:1,
             flightCode: "FC 2144",
             busName: "КАВЗ-4235 Аврора",
             dateDeparture: "01-05-2021",
@@ -27,6 +28,7 @@ const app = new Vue({
             stationNameFrom: "Cheboksary Bus station",
           },
           {
+            flightId:2,
             flightCode: "FC 2162",
             busName: "КАВЗ-4235 Аврора",
             dateDeparture: "02-05-2021",
@@ -43,6 +45,7 @@ const app = new Vue({
         ],
         flights_back: [
           {
+            flightId:3,
             flightCode: "FC 2143",
             busName: "ВЕКТОР NEXT 8.8",
             dateDeparture: "01-05-2021",
@@ -57,6 +60,7 @@ const app = new Vue({
             stationNameTo: "Cheboksary Bus station",
           },
           {
+            flightId:4,
             flightCode: "FC 2161",
             busName: "ВЕКТОР NEXT 8.8",
             dateDeparture: "02-05-2021",
@@ -102,6 +106,9 @@ const app = new Vue({
         },
       ],
     },
+    currentBooking: {
+
+    }
   },
   methods: {
     async findFlights() {
@@ -171,6 +178,62 @@ const app = new Vue({
         sum += this.forms.selectedFlights[key].cost;
       return sum;
     },
+    addNewPassenger() {
+      this.errors.passengers.push({
+        firstName:null,
+        lastName:null,
+        birthDate:null,
+        documentNumber:null
+      });
+      this.forms.passengers.push({
+        firstName:null,
+        lastName:null,
+        birthDate:null,
+        documentNumber:null
+      })
+    },
+    removePassenger(index) {
+      if(this.forms.passengers.length ===1) {
+        alert('The last passenger cannot be removed');
+        return;
+      }
+      this.forms.passengers.splice(index,1);
+      this.errors.passengers.splice(index,1);
+    },
+    async makeBooking() {
+      for(let i = 0; i < this.errors.passengers.length; i++)
+        this.clearErrors(this.errors.passengers[i]);
+      const body = {
+        flightFrom: {
+          id:this.forms.selectedFlights.to.flightId,
+          date:this.forms.selectedFlights.to.dateDeparture
+        },
+        passengers: this.forms.passengers
+      }
+      if(this.selectedFlights.back)
+        body.flightBack = {
+          id:this.forms.selectedFlights.back.flightId,
+          date:this.forms.selectedFlights.back.dateDeparture
+        }
+      const response = await sendRequest('/booking','POST',body);
+      if(response.status !== 201) {
+        if(response.json.message)
+          alert(response.json.message);
+        else if(response.json.error.errors)
+          for(const errorKey in response.json.error.errors) {
+            const errorInfo = errorKey.split('.')
+            console.log(errorInfo);
+            if(errorInfo[0] === 'passengers')
+              this.errors.passengers[errorInfo[1]][errorInfo[2]] = response.json.error
+          }
+      }
+      else this.updateBookingAndGoToManagement(response.json.data.code);
+    },
+    async updateBookingAndGoToManagement(code){
+      const bookingResponse = await sendRequest(`/booking/${code}`,'GET');
+      this.currentBooking = bookingResponse.json.data;
+      this.go('booking_management');
+    }
   },
 });
 
