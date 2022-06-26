@@ -106,9 +106,7 @@ const app = new Vue({
         },
       ],
     },
-    currentBooking: {
-
-    }
+    currentBooking: {}
   },
   methods: {
     async findFlights() {

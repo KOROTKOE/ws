@@ -446,20 +446,20 @@
                     <th>Arrival time</th>
                     <th>Flight time</th>
                 </tr>
-                <tr>
-                    <td class="test-6-fc">FC 2144</td>
-                    <td class="test-6-ac">КАВЗ-4235 Аврора</td>
-                    <td class="test-6-from">Cheboksary</td>
+                <tr v-for="flight in currentBooking.flights" :key="flight.flightId">
+                    <td class="test-6-fc">{{flight.flightCode}}</td>
+                    <td class="test-6-ac">{{busName}}</td>
+                    <td class="test-6-from">{{flight.countryFrom}}</td>
                     <td>
-                        <span class="test-6-dd">01-05-2020</span>
+                        <span class="test-6-dd">{{flight.dateDeparture}}</span>
                         at
-                        <span class="test-6-dt">05:30</span>
+                        <span class="test-6-dt">{{flight.timeDeparture}}</span>
                     </td>
-                    <td class="test-6-to">Kazan</td>
-                    <td class="test-6-at">18:00</td>
+                    <td class="test-6-to">{{flight.countryTo}}</td>
+                    <td class="test-6-at">{{flight.arrivalTime}}</td>
                     <td class="test-6-ft">
-                        <span class="test-6-fhour">12</span>h
-                        <span class="test-6-fminutes">30</span>min
+                        <span class="test-6-fhour">{{flight.hour}}</span>h
+                        <span class="test-6-fminutes">{{flight.min}}</span>min
                     </td>
                 </tr>
 
@@ -477,21 +477,13 @@
                     <th>Document number</th>
                     <th>Place</th>
                 </tr>
-                <tr>
-                    <td class="test-6-name">John</td>
-                    <td class="test-6-last">Doe</td>
-                    <td class="test-6-dob">01-01-1990</td>
-                    <td class="test-6-doc">8484548413</td>
-                    <td class="test-6-seat">1B</td>
+                <tr v-for="passenger in currentBooking.passengers" :key="passenger.id">
+                    <td class="test-6-name">{{passenger.firstName}}</td>
+                    <td class="test-6-last">{{passenger.lastName}}</td>
+                    <td class="test-6-dob">{{passenger.birthDate}}</td>
+                    <td class="test-6-doc">{{passenger.documentNumber}}</td>
+                    <td class="test-6-seat" v-if="currentBooking.flights.length === 2">{{passenger.placeBack || 'Is not selected'}}</td>
                 </tr>
-                <tr>
-                    <td class="test-6-name">Ivan</td>
-                    <td class="test-6-last">Ivanov</td>
-                    <td class="test-6-dob">24-10-2001</td>
-                    <td class="test-6-doc">6565752703</td>
-                    <td class="test-6-seat">2B</td>
-                </tr>
-
             </table>
 
             <a href="seat.html" class="btn btn-primary test-6-select">Select place</a>
