@@ -13,66 +13,90 @@ const app = new Vue({
       flights: {
         flights_to: [
           {
-            flightId:1,
-            flightCode: "FC 2144",
-            busName: "КАВЗ-4235 Аврора",
-            dateDeparture: "01-05-2021",
-            timeDeparture: "05:30",
-            arrivalTime: "18:00",
-            hour: 12,
-            min: 30,
-            cost: 1000,
-            countryTo: "Kazan",
-            stationNameTo: "Kazan Bus station",
-            countryFrom: "Cheboksary",
-            stationNameFrom: "Cheboksary Bus station",
+            flight_id: 2,
+            flight_code: "FP 1200",
+            bus: "КАВЗ-4235 Аврора",
+            from: {
+              city: "Cheboksary",
+              station: "Cheboksary Bus station",
+              iata: "CSY",
+              date: "2021-05-01",
+              time: "05:30",
+            },
+            to: {
+              city: "Kazan",
+              station: "Kazan Bus station ",
+              iata: "KZN",
+              date: "2021-05-01",
+              time: "18:00",
+            },
+            cost: 3000,
+            availability: 156,
           },
           {
-            flightId:2,
-            flightCode: "FC 2162",
-            busName: "КАВЗ-4235 Аврора",
-            dateDeparture: "02-05-2021",
-            timeDeparture: "21:00",
-            arrivalTime: "08:00",
-            hour: 11,
-            min: 0,
-            cost: 1000,
-            countryTo: "Kazan",
-            stationNameTo: "Kazan Bus station",
-            countryFrom: "Cheboksary",
-            stationNameFrom: "Cheboksary Bus station",
+            flight_id: 14,
+            flight_code: "FP 1201",
+            bus: "КАВЗ-4235 Аврора",
+            from: {
+              city: "Cheboksary",
+              station: "Cheboksary Bus station",
+              iata: "CSY",
+              date: "2021-05-01",
+              time: "21:00",
+            },
+            to: {
+              city: "Kazan",
+              station: "Kazan Bus station ",
+              iata: "KZN",
+              date: "2021-05-02",
+              time: "08:00",
+            },
+            cost: 3000,
+            availability: 156,
           },
         ],
         flights_back: [
           {
-            flightId:3,
-            flightCode: "FC 2143",
-            busName: "ВЕКТОР NEXT 8.8",
-            dateDeparture: "01-05-2021",
-            timeDeparture: "21:00",
-            arrivalTime: "08:00",
-            hour: 11,
-            min: 0,
-            cost: 1500,
-            countryFrom: "Kazan",
-            stationNameFrom: "Kazan Bus station",
-            countryTo: "Cheboksary",
-            stationNameTo: "Cheboksary Bus station",
+            flight_id: 1,
+            flight_code: "FP 2100",
+            bus: "ВЕКТОР NEXT 8.8",
+            from: {
+              city: "Kazan",
+              station: "Kazan Bus station",
+              iata: "KZN",
+              date: "2021-05-01",
+              time: "21:00",
+            },
+            to: {
+              city: "Cheboksary",
+              station: "Cheboksary Bus station",
+              iata: "KZN",
+              date: "2021-05-02",
+              time: "08:00",
+            },
+            cost: 4000,
+            availability: 156,
           },
           {
-            flightId:4,
-            flightCode: "FC 2161",
-            busName: "ВЕКТОР NEXT 8.8",
-            dateDeparture: "02-05-2021",
-            timeDeparture: "05:30",
-            arrivalTime: "18:00",
-            hour: 12,
-            min: 30,
-            cost: 1300,
-            countryFrom: "Kazan",
-            stationNameFrom: "Kazan Bus station",
-            countryTo: "Cheboksary",
-            stationNameTo: "Cheboksary Bus station",
+            flight_id: 13,
+            flight_code: "FP 2101",
+            bus: "ВЕКТОР NEXT 8.8",
+            from: {
+              city: "Kazan",
+              station: "Kazan Bus station",
+              iata: "KZN",
+              date: "2021-05-02",
+              time: "08:00",
+            },
+            to: {
+              city: "Cheboksary",
+              station: "Cheboksary Bus station",
+              iata: "CSY",
+              date: "2021-05-02",
+              time: "21:30",
+            },
+            cost: 4000,
+            availability: 156,
           },
         ],
       },
@@ -82,12 +106,23 @@ const app = new Vue({
       },
       passengers: [
         {
-          firstName: null,
-          lastName: null,
-          birthDate: null,
-          documentNumber: null,
+          firstName: "Ivan",
+          lastName: "Ivanov",
+          birthDate: "1990-02-20",
+          documentNumber: "1234567890",
         },
+        // {
+        //   firstName: "Ivan",
+        //   lastName: "Gorbunov",
+        //   birthDate: "1990-03-20",
+        //   documentNumber: "1224567890",
+        // },
       ],
+      seat: {
+        passenger: null,
+        seat: null,
+        type: "from",
+      },
     },
     errors: {
       busSearch: {
@@ -105,38 +140,21 @@ const app = new Vue({
           documentNumber: null,
         },
       ],
+      seat: [],
     },
-    currentBooking: {}
+    currentBooking: {},
   },
   methods: {
-    async findFlights() {
-      this.go("flights");
+    findFlights() {
       this.clearErrors(this.errors.busSearch);
-      let url = "/flight";
-      if (this.forms.busSearch.date2)
-        url += ` ?from=${this.forms.busSearch.from}
-                                &to=${this.forms.busSearch.to}
-                                &date1=${this.forms.busSearch.date1}
-                                &date2=${this.forms.busSearch.date2}
-                                &passengers=${this.forms.busSearch.passengers}`;
-      else
-        url += ` ?from=${this.forms.busSearch.from}
-                                &to=${this.forms.busSearch.to}
-                                &date1=${this.forms.busSearch.date1}
-                                &passengers=${this.forms.busSearch.passengers}`;
-      const response = await sendRequest(url, "GET");
-
-      if (response.status != 200) {
-        let errors = response.json.error.errors;
-        if (errors.from) this.errors.busSearch.from = errors.from[0];
-        if (errors.to) this.errors.busSearch.to = errors.to[0];
-        if (errors.date1) this.errors.busSearch.date1 = errors.date1[0];
-        if (errors.date2) this.errors.busSearch.date2 = errors.date2[0];
-        if (errors.passengers)
-          this.errors.busSearch.passengers = errors.passengers[0];
-      } else {
-        this.go("flights");
-      }
+      for (const key in this.forms.busSearch)
+        this.errors.busSearch[key] = this.checkError(
+          key,
+          this.forms.busSearch[key]
+        );
+      for (const key in this.errors.busSearch)
+        if (this.errors.busSearch[key]) return;
+      this.go("flights");
     },
     clearErrors(errorBlock) {
       for (let key in errorBlock) {
@@ -146,13 +164,17 @@ const app = new Vue({
     go(screen) {
       this.page = screen;
     },
-    getTimeDiff(firstDate, secondDate) {
-      let getDate = (string) =>
-        new Date(0, 0, 0, string.split(":")[0], string.split(":")[1]);
-      let different = getDate(secondDate) - getDate(firstDate);
-      let hours = Math.floor((different % 86400000) / 3000000);
-      let minutes = Math.round(((different % 86400000) % 3000000) / 60000);
-      return hours + ":" + minutes;
+    getTimeDiff(flight) {
+      const firstDate = new Date(flight.from.date + "T" + flight.from.time);
+      const secondDate = new Date(flight.to.date + "T" + flight.to.time);
+      const busTime = new Date(secondDate.getTime() - firstDate.getTime());
+      return {
+        hours: busTime.getHours() - 3,
+        minutes:
+          busTime.getMinutes() < 10
+            ? "0" + busTime.getMinutes()
+            : busTime.getMinutes(),
+      };
     },
     selectFlight(flight, where) {
       if (where === "to") this.forms.selectedFlights.to = flight;
@@ -177,83 +199,74 @@ const app = new Vue({
       return sum;
     },
     addNewPassenger() {
-      this.errors.passengers.push({
-        firstName:null,
-        lastName:null,
-        birthDate:null,
-        documentNumber:null
-      });
-      this.forms.passengers.push({
-        firstName:null,
-        lastName:null,
-        birthDate:null,
-        documentNumber:null
-      })
+      if (this.forms.passengers.length === 6)
+        alert("This is max passengers count");
+      else {
+        this.errors.passengers.push({
+          firstName: null,
+          lastName: null,
+          birthDate: null,
+          documentNumber: null,
+        });
+        this.forms.passengers.push({
+          firstName: null,
+          lastName: null,
+          birthDate: null,
+          documentNumber: null,
+        });
+      }
     },
     removePassenger(index) {
-      if(this.forms.passengers.length ===1) {
-        alert('The last passenger cannot be removed');
-        return;
+      if (this.forms.passengers.length === 1)
+        alert("The last passenger cannot be removed");
+      else {
+        this.forms.passengers.splice(index, 1);
+        this.errors.passengers.splice(index, 1);
       }
-      this.forms.passengers.splice(index,1);
-      this.errors.passengers.splice(index,1);
     },
-    async makeBooking() {
-      for(let i = 0; i < this.errors.passengers.length; i++)
-        this.clearErrors(this.errors.passengers[i]);
-      const body = {
-        flightFrom: {
-          id:this.forms.selectedFlights.to.flightId,
-          date:this.forms.selectedFlights.to.dateDeparture
-        },
-        passengers: this.forms.passengers
-      }
-      if(this.selectedFlights.back)
-        body.flightBack = {
-          id:this.forms.selectedFlights.back.flightId,
-          date:this.forms.selectedFlights.back.dateDeparture
-        }
-      const response = await sendRequest('/booking','POST',body);
-      if(response.status !== 201) {
-        if(response.json.message)
-          alert(response.json.message);
-        else if(response.json.error.errors)
-          for(const errorKey in response.json.error.errors) {
-            const errorInfo = errorKey.split('.')
-            console.log(errorInfo);
-            if(errorInfo[0] === 'passengers')
-              this.errors.passengers[errorInfo[1]][errorInfo[2]] = response.json.error
-          }
-      }
-      else this.updateBookingAndGoToManagement(response.json.data.code);
+    makeBooking() {
+      for (const error of this.errors.passengers) this.clearErrors(error);
+      this.forms.passengers.forEach((passenger, index) => {
+        for (const key in passenger)
+          this.errors.passengers[index][key] = this.checkError(
+            key,
+            passenger[key]
+          );
+      });
+      for (const error of this.errors.passengers)
+        for (const key in error) if (error[key]) return;
+      this.currentBooking = {
+        flights: { ...this.forms.selectedFlights },
+        passengers: this.forms.passengers,
+      };
+      this.go("booking_management");
     },
-    async updateBookingAndGoToManagement(code){
-      const bookingResponse = await sendRequest(`/booking/${code}`,'GET');
-      this.currentBooking = bookingResponse.json.data;
-      this.go('booking_management');
-    }
+    checkError(name, value) {
+      if (name === "date2") return null;
+      if (!value) return `The ${name} field is requiered`;
+      switch (name) {
+        case "birthDate":
+          if (!/\d\d\d\d-\d\d-\d\d/.test(value))
+            return `The ${name} does not match the format yyyy-mm-dd`;
+          break;
+        case "documentNumber":
+          if (value.length !== 10) return `The ${name} must be 10 digitals`;
+          break;
+      }
+      return null;
+    },
+    selectSeat(e) {
+      let seats = document.querySelectorAll(".seat");
+      seats.forEach((seat) => seat.classList.remove("selected"));
+      e.target.classList.add("selected");
+      this.forms.seat.seat = e.target.textContent;
+    },
+    async goToSeats() {
+      await this.go("seats");
+      this.forms.seat.passenger = null;
+      this.forms.seat.seat = null;
+      let seats = document.querySelectorAll(".seat");
+      seats.forEach((seat) => seat.addEventListener("click", this.selectSeat));
+    },
   },
 });
-
-const HOST = "http://server-m3.wsr.ru";
-async function sendRequest(url, method, body = null) {
-  const config = {
-    method,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-
-  if (body) config.body = JSON.stringify(body);
-
-  const result = await fetch(HOST + url, config);
-  let response = {
-    status: result.status,
-  };
-
-  try {
-    response.json = await result.json();
-  } catch {}
-
-  return response;
-}
