@@ -121,7 +121,19 @@ const app = new Vue({
       seat: {
         passenger: null,
         seat: null,
-        type: "from",
+        type: "back",
+      },
+      registration: {
+        first_name: "Ivan",
+        last_name: "Ivanov",
+        phone: "89001234567",
+        password: "paSSword",
+        document_number: "7567999222",
+        double_password: "paSSword",
+      },
+      login: {
+        phone: "89001234567",
+        password: "paSSword",
       },
     },
     errors: {
@@ -141,8 +153,72 @@ const app = new Vue({
         },
       ],
       seat: [],
+      registration: {
+        first_name: null,
+        last_name: null,
+        phone: null,
+        password: null,
+        document_number: null,
+        double_password: null,
+      },
+      login: {
+        phone: null,
+        password: null,
+      },
     },
     currentBooking: {},
+    user: {
+      first_name: "Ivan",
+      last_name: "Ivanov",
+      phone: "89001234567",
+      document_number: "1224567890",
+    },
+    userFlights: {
+      favorite: [],
+      past: [
+        {
+          flight_id: 1,
+          flight_code: "FP2100",
+          from: {
+            city: "Cheboksary",
+            station: "Cheboksary Bus station",
+            iata: "CHB",
+            date: "2020-05-01",
+            time: "05:30",
+          },
+          to: {
+            city: "Kazan",
+            station: "Kazan Bus station",
+            iata: "KZN",
+            date: "2020-05-01",
+            time: "18:00",
+          },
+          cost: 3000,
+          availability: 58,
+        },
+        {
+          flight_id: 2,
+          flight_code: "FP1200",
+          from: {
+            city: "Kazan",
+            station: "Kazan Bus station",
+            iata: "KZN",
+            date: "2020-05-01",
+            time: "21:00",
+          },
+          to: {
+            city: "Cheboksary",
+            station: "Cheboksary Bus station",
+            iata: "CSY",
+            date: "2020-05-02",
+            time: "08:00",
+          },
+          cost: 4000,
+          availability: 58,
+        },
+      ],
+    },
+    upcomingBookings: [],
   },
   methods: {
     findFlights() {
@@ -256,17 +332,82 @@ const app = new Vue({
       return null;
     },
     selectSeat(e) {
-      let seats = document.querySelectorAll(".seat");
-      seats.forEach((seat) => seat.classList.remove("selected"));
-      e.target.classList.add("selected");
-      this.forms.seat.seat = e.target.textContent;
+      if (!this.forms.seat.passenger) return;
+      setSelectedSeat(e.target);
+      this.forms.seat.seat = e.target.classList[1].split("-")[2];
     },
     async goToSeats() {
       await this.go("seats");
-      this.forms.seat.passenger = null;
-      this.forms.seat.seat = null;
       let seats = document.querySelectorAll(".seat");
       seats.forEach((seat) => seat.addEventListener("click", this.selectSeat));
     },
+    selectPassenger(documentNumber) {
+      if (documentNumber === this.forms.seat.passenger) return;
+      let selectedPassangerSeat;
+      this.currentBooking.passengers = this.currentBooking.passengers.map(
+        (passenger) => {
+          if (passenger.documentNumber === documentNumber)
+            selectedPassangerSeat = passenger.placeBack;
+          if (passenger.documentNumber === this.forms.seat.passenger)
+            passenger.placeBack = this.forms.seat.seat;
+          return passenger;
+        }
+      );
+      this.forms.seat.passenger = documentNumber;
+      this.forms.seat.seat = selectedPassangerSeat;
+      setSelectedSeat(selectedPassangerSeat);
+    },
+    returnToManagementFromSeats() {
+      this.currentBooking.passengers = this.currentBooking.passengers.map(
+        (passenger) => {
+          if (passenger.documentNumber === this.forms.seat.passenger)
+            passenger.placeBack = this.forms.seat.seat;
+          return passenger;
+        }
+      );
+      let seats = document.querySelectorAll(".seat");
+      seats.forEach((seat) =>
+        seat.removeEventListener("click", this.selectSeat)
+      );
+      this.go("booking_management");
+    },
+    changeSeat() {
+      this.errors.seat = [];
+      this.returnToManagementFromSeats();
+    },
+    register() {
+      const data = this.forms.registration;
+      const errors = this.errors.registration;
+      this.clearErrors(errors);
+      for (const key in data) errors[key] = this.checkError(key, data[key]);
+      for (const key in errors) if (errors[key]) return;
+      this.go("login");
+    },
+    login() {
+      const data = this.forms.login;
+      const errors = this.errors.login;
+      this.clearErrors(errors);
+      for (const key in data) errors[key] = this.checkError(key, data[key]);
+      for (const key in errors) if (errors[key]) return;
+      this.go("profile");
+    },
+    clearUserHistory() {
+      for (const key in this.userFlights) this.userFlights[key] = [];
+      this.upcomingBookings = [];
+    },
+    goPersonalArea() {
+      if (this.user) this.go("profile");
+      else this.go("login");
+    },
   },
 });
+
+function setSelectedSeat(seat) {
+  let seats = document.querySelectorAll(".seat");
+  seats.forEach((seat) => seat.classList.remove("seat-selected"));
+  if (typeof seat === "string")
+    document
+      .querySelector(`.test-100-${seat.toLowerCase()}`)
+      .classList.add("seat-selected");
+  else seat.classList.add("seat-selected");
+}
