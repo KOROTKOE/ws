@@ -979,25 +979,53 @@
           <table class="table table-hover">
             <tr>
               <td>
-                <span class="test-3-from">Cheboksary</span> ->
-                <span class="test-3-to">Kazan</span>
+                <span class="test-3-from"
+                  >{{userFlights.favorite[0].from.city}}</span
+                >
+                ->
+                <span class="test-3-to"
+                  >{{userFlights.favorite[0].to.city}}</span
+                >
                 <br />
-                <span class="test-3-from">Kazan</span> ->
-                <span class="test-3-to">Cheboksary</span>
+                <span class="test-3-from"
+                  >{{userFlights.favorite[1].from.city}}</span
+                >
+                ->
+                <span class="test-3-to"
+                  >{{userFlights.favorite[1].to.city}}</span
+                >
               </td>
               <td>
-                Departure at
-                <span class="test-3-t1">05:30</span>
+                Departured
+                <span class="test-3-d1"
+                  >{{userFlights.favorite[0].from.date}}</span
+                >
+                at
+                <span class="test-3-t1"
+                  >{{userFlights.favorite[0].from.time}}</span
+                >
 
                 <br />
 
-                Departure at
-                <span class="test-3-t1">21:00</span>
+                Departured
+                <span class="test-3-d1"
+                  >{{userFlights.favorite[1].from.date}}</span
+                >
+                at
+                <span class="test-3-t1"
+                  >{{userFlights.favorite[1].from.time}}</span
+                >
               </td>
               <td>
-                Arrival at <span class="test-3-t2">18:00</span>
+                Arrived at
+                <span class="test-3-t2"
+                  >{{userFlights.favorite[0].to.time}}</span
+                >
                 <br />
-                Arrival at <span class="test-3-t2">08:00</span>
+                Arrived at
+                <span class="test-3-t2"
+                  >{{userFlights.favorite[1].to.time}}</span
+                >
               </td>
               <td>
                 <a
@@ -1012,25 +1040,53 @@
             </tr>
             <tr>
               <td>
-                <span class="test-3-from">Cheboksary</span> ->
-                <span class="test-3-to">Kazan</span>
+                <span class="test-3-from"
+                  >{{userFlights.favorite[1].from.city}}</span
+                >
+                ->
+                <span class="test-3-to"
+                  >{{userFlights.favorite[1].to.city}}</span
+                >
                 <br />
-                <span class="test-3-from">Kazan</span> ->
-                <span class="test-3-to">Cheboksary</span>
+                <span class="test-3-from"
+                  >{{userFlights.favorite[0].from.city}}</span
+                >
+                ->
+                <span class="test-3-to"
+                  >{{userFlights.favorite[0].to.city}}</span
+                >
               </td>
               <td>
-                Departure at
-                <span class="test-3-t1">05:30</span>
+                Departured
+                <span class="test-3-d1"
+                  >{{userFlights.favorite[1].from.date}}</span
+                >
+                at
+                <span class="test-3-t1"
+                  >{{userFlights.favorite[1].from.time}}</span
+                >
 
                 <br />
 
-                Departure at
-                <span class="test-3-t1">21:00</span>
+                Departured
+                <span class="test-3-d1"
+                  >{{userFlights.favorite[0].from.date}}</span
+                >
+                at
+                <span class="test-3-t1"
+                  >{{userFlights.favorite[0].from.time}}</span
+                >
               </td>
               <td>
-                Arrival at <span class="test-3-t2">18:00</span>
+                Arrived at
+                <span class="test-3-t2"
+                  >{{userFlights.favorite[1].to.time}}</span
+                >
                 <br />
-                Arrival at <span class="test-3-t2">08:00</span>
+                Arrived at
+                <span class="test-3-t2"
+                  >{{userFlights.favorite[0].to.time}}</span
+                >
               </td>
               <td>
                 <a
@@ -1052,29 +1108,37 @@
           <table class="table table-hover">
             <tr>
               <td>
-                <span class="test-3-from">Cheboksary</span> ->
-                <span class="test-3-to">Kazan</span>
+                <span class="test-3-from"
+                  >{{userFlights.past[0].from.city}}</span
+                >
+                ->
+                <span class="test-3-to">{{userFlights.past[0].to.city}}</span>
                 <br />
-                <span class="test-3-from">Kazan</span> ->
-                <span class="test-3-to">Cheboksary</span>
+                <span class="test-3-from"
+                  >{{userFlights.past[1].from.city}}</span
+                >
+                ->
+                <span class="test-3-to">{{userFlights.past[1].to.city}}</span>
               </td>
               <td>
                 Departured
-                <span class="test-3-d1">01-05-2020</span>
+                <span class="test-3-d1">{{userFlights.past[0].from.date}}</span>
                 at
-                <span class="test-3-t1">05:30</span>
+                <span class="test-3-t1">{{userFlights.past[0].from.time}}</span>
 
                 <br />
 
                 Departured
-                <span class="test-3-d1">01-05-2020</span>
+                <span class="test-3-d1">{{userFlights.past[1].from.date}}</span>
                 at
-                <span class="test-3-t1">21:00</span>
+                <span class="test-3-t1">{{userFlights.past[1].from.time}}</span>
               </td>
               <td>
-                Arrived at <span class="test-3-t2">18:00</span>
+                Arrived at
+                <span class="test-3-t2">{{userFlights.past[0].to.time}}</span>
                 <br />
-                Arrived at <span class="test-3-t2">08:00</span>
+                Arrived at
+                <span class="test-3-t2">{{userFlights.past[1].to.time}}</span>
               </td>
               <td>
                 <a href="#" class="btn btn-sm btn-primary">Add to favorites</a>
@@ -1082,36 +1146,40 @@
             </tr>
             <tr>
               <td>
-                <span class="test-3-from">Kazan</span> ->
-                <span class="test-3-to">Cheboksary</span>
-                <br />
-                <span class="test-3-from">Cheboksary</span> ->
-                <span class="test-3-to">Kazan</span>
-              </td>
-              <td>
-                Departured
-                <span class="test-3-d1">01-05-2020</span>
-                at
-                <span class="test-3-t1">05:30</span>
-
-                <br />
-
-                Departured
-                <span class="test-3-d1">01-05-2020</span>
-                at
-                <span class="test-3-t1">21:00</span>
-              </td>
-              <td>
-                Arrived at <span class="test-3-t2">18:00</span>
-                <br />
-                Arrived at <span class="test-3-t2">08:00</span>
-              </td>
-              <td>
-                <a
-                  href="#"
-                  class="btn btn-sm btn-primary test-3-add-to-favorites"
-                  >Add to favorites</a
+                <span class="test-3-from"
+                  >{{userFlights.past[1].from.city}}</span
                 >
+                ->
+                <span class="test-3-to">{{userFlights.past[1].to.city}}</span>
+                <br />
+                <span class="test-3-from"
+                  >{{userFlights.past[0].from.city}}</span
+                >
+                ->
+                <span class="test-3-to">{{userFlights.past[0].to.city}}</span>
+              </td>
+              <td>
+                Departured
+                <span class="test-3-d1">{{userFlights.past[1].from.date}}</span>
+                at
+                <span class="test-3-t1">{{userFlights.past[1].from.time}}</span>
+
+                <br />
+
+                Departured
+                <span class="test-3-d1">{{userFlights.past[0].from.date}}</span>
+                at
+                <span class="test-3-t1">{{userFlights.past[0].from.time}}</span>
+              </td>
+              <td>
+                Arrived at
+                <span class="test-3-t2">{{userFlights.past[1].to.time}}</span>
+                <br />
+                Arrived at
+                <span class="test-3-t2">{{userFlights.past[0].to.time}}</span>
+              </td>
+              <td>
+                <a href="#" class="btn btn-sm btn-primary">Add to favorites</a>
               </td>
             </tr>
           </table>

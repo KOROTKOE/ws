@@ -1,7 +1,7 @@
 const app = new Vue({
   el: "#app",
   data: {
-    page: "main",
+    page: "profile",
     forms: {
       busSearch: {
         from: "KZN",
@@ -174,7 +174,48 @@ const app = new Vue({
       document_number: "1224567890",
     },
     userFlights: {
-      favorite: [],
+      favorite: [
+        {
+          flight_id: 1,
+          flight_code: "FP2100",
+          from: {
+            city: "Cheboksary",
+            station: "Cheboksary Bus station",
+            iata: "CHB",
+            date: "2020-05-01",
+            time: "05:30",
+          },
+          to: {
+            city: "Kazan",
+            station: "Kazan Bus station",
+            iata: "KZN",
+            date: "2020-05-01",
+            time: "18:00",
+          },
+          cost: 3000,
+          availability: 58,
+        },
+        {
+          flight_id: 2,
+          flight_code: "FP1200",
+          from: {
+            city: "Kazan",
+            station: "Kazan Bus station",
+            iata: "KZN",
+            date: "2020-05-01",
+            time: "21:00",
+          },
+          to: {
+            city: "Cheboksary",
+            station: "Cheboksary Bus station",
+            iata: "CSY",
+            date: "2020-05-02",
+            time: "08:00",
+          },
+          cost: 4000,
+          availability: 58,
+        },
+      ],
       past: [
         {
           flight_id: 1,
@@ -219,6 +260,7 @@ const app = new Vue({
       ],
     },
     upcomingBookings: [],
+    redirectFromUser: true,
   },
   methods: {
     findFlights() {
@@ -260,9 +302,17 @@ const app = new Vue({
       if (this.forms.busSearch.date2)
         if (!this.forms.selectedFlights.to || !this.forms.selectedFlights.back)
           alert("Please, select flights");
-        else this.go("booking");
-      else if (!this.forms.selectedFlights.to) alert("Please, select flights");
-      else this.go("booking");
+        else {
+          this.initializePassenger();
+          this.go("booking");
+        }
+      else {
+        if (!this.forms.selectedFlights.to) alert("Please, select flights");
+        else {
+          this.initializePassenger();
+          this.go("booking");
+        }
+      }
     },
     backToMain() {
       this.forms.selectedFlights = { to: null, back: null };
@@ -398,6 +448,29 @@ const app = new Vue({
     goPersonalArea() {
       if (this.user) this.go("profile");
       else this.go("login");
+    },
+    bookNow(index) {
+      this.initializePassenger();
+      this.redirectFromUser = true;
+      this.selectedFlights.to = this.userFlights.favorite[index];
+      this.selectedFlights.to.from.date = null;
+      this.go("booking");
+    },
+    initializePassenger() {
+      if (this.token) {
+        this.forms.passengers[0].firstName = this.user.first_name;
+        this.forms.passengers[0].lastName = this.user.last_name;
+        this.forms.passengers[0].documentNumber = this.user.document_number;
+      } else {
+        this.forms.passengers = [
+          {
+            firstName: null,
+            lastName: null,
+            birthDate: null,
+            documentNumber: null,
+          },
+        ];
+      }
     },
   },
 });
