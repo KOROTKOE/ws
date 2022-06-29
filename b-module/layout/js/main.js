@@ -1,7 +1,7 @@
 const app = new Vue({
   el: "#app",
   data: {
-    page: "profile",
+    page: "main",
     forms: {
       busSearch: {
         from: "KZN",
@@ -106,17 +106,11 @@ const app = new Vue({
       },
       passengers: [
         {
-          firstName: "Ivan",
-          lastName: "Ivanov",
-          birthDate: "1990-02-20",
-          documentNumber: "1234567890",
+          firstName: null,
+          lastName: null,
+          birthDate: null,
+          documentNumber: null,
         },
-        // {
-        //   firstName: "Ivan",
-        //   lastName: "Gorbunov",
-        //   birthDate: "1990-03-20",
-        //   documentNumber: "1224567890",
-        // },
       ],
       seat: {
         passenger: null,
@@ -165,6 +159,7 @@ const app = new Vue({
         phone: null,
         password: null,
       },
+      dateFrom: null,
     },
     currentBooking: {},
     user: {
@@ -172,94 +167,164 @@ const app = new Vue({
       last_name: "Ivanov",
       phone: "89001234567",
       document_number: "1224567890",
+      flight_count: 10,
     },
     userFlights: {
-      favorite: [
-        {
-          flight_id: 1,
-          flight_code: "FP2100",
-          from: {
-            city: "Cheboksary",
-            station: "Cheboksary Bus station",
-            iata: "CHB",
-            date: "2020-05-01",
-            time: "05:30",
-          },
-          to: {
-            city: "Kazan",
-            station: "Kazan Bus station",
-            iata: "KZN",
-            date: "2020-05-01",
-            time: "18:00",
-          },
-          cost: 3000,
-          availability: 58,
-        },
-        {
-          flight_id: 2,
-          flight_code: "FP1200",
-          from: {
-            city: "Kazan",
-            station: "Kazan Bus station",
-            iata: "KZN",
-            date: "2020-05-01",
-            time: "21:00",
-          },
-          to: {
-            city: "Cheboksary",
-            station: "Cheboksary Bus station",
-            iata: "CSY",
-            date: "2020-05-02",
-            time: "08:00",
-          },
-          cost: 4000,
-          availability: 58,
-        },
-      ],
+      favorite: [],
       past: [
         {
-          flight_id: 1,
-          flight_code: "FP2100",
           from: {
-            city: "Cheboksary",
-            station: "Cheboksary Bus station",
-            iata: "CHB",
-            date: "2020-05-01",
-            time: "05:30",
+            flight_id: 1,
+            flight_code: "FP2100",
+            from: {
+              city: "Cheboksary",
+              station: "Cheboksary Bus station",
+              iata: "CHB",
+              date: "2020-05-01",
+              time: "05:30",
+            },
+            to: {
+              city: "Kazan",
+              station: "Kazan Bus station",
+              iata: "KZN",
+              date: "2020-05-01",
+              time: "18:00",
+            },
+            cost: 3000,
+            availability: 58,
           },
-          to: {
-            city: "Kazan",
-            station: "Kazan Bus station",
-            iata: "KZN",
-            date: "2020-05-01",
-            time: "18:00",
+          back: {
+            flight_id: 2,
+            flight_code: "FP1200",
+            from: {
+              city: "Kazan",
+              station: "Kazan Bus station",
+              iata: "KZN",
+              date: "2020-05-01",
+              time: "21:00",
+            },
+            to: {
+              city: "Cheboksary",
+              station: "Cheboksary Bus station",
+              iata: "CSY",
+              date: "2020-05-02",
+              time: "08:00",
+            },
+            cost: 4000,
+            availability: 58,
           },
-          cost: 3000,
-          availability: 58,
         },
         {
-          flight_id: 2,
-          flight_code: "FP1200",
+          back: {
+            flight_id: 1,
+            flight_code: "FP2100",
+            from: {
+              city: "Cheboksary",
+              station: "Cheboksary Bus station",
+              iata: "CHB",
+              date: "2020-05-01",
+              time: "05:30",
+            },
+            to: {
+              city: "Kazan",
+              station: "Kazan Bus station",
+              iata: "KZN",
+              date: "2020-05-01",
+              time: "18:00",
+            },
+            cost: 3000,
+            availability: 58,
+          },
           from: {
-            city: "Kazan",
-            station: "Kazan Bus station",
-            iata: "KZN",
-            date: "2020-05-01",
-            time: "21:00",
+            flight_id: 2,
+            flight_code: "FP1200",
+            from: {
+              city: "Kazan",
+              station: "Kazan Bus station",
+              iata: "KZN",
+              date: "2020-05-01",
+              time: "21:00",
+            },
+            to: {
+              city: "Cheboksary",
+              station: "Cheboksary Bus station",
+              iata: "CSY",
+              date: "2020-05-02",
+              time: "08:00",
+            },
+            cost: 4000,
+            availability: 58,
           },
-          to: {
-            city: "Cheboksary",
-            station: "Cheboksary Bus station",
-            iata: "CSY",
-            date: "2020-05-02",
-            time: "08:00",
-          },
-          cost: 4000,
-          availability: 58,
         },
       ],
     },
-    upcomingBookings: [],
+    upcomingBookings: [
+      {
+        from: {
+          flight_id: 1,
+          flight_code: "FP2100",
+          from: {
+            city: "Cheboksary",
+            station: "Cheboksary Bus station",
+            iata: "CHB",
+            date: "2020-05-01",
+            time: "05:30",
+          },
+          to: {
+            city: "Kazan",
+            station: "Kazan Bus station",
+            iata: "KZN",
+            date: "2020-05-01",
+            time: "18:00",
+          },
+          cost: 3000,
+          availability: 58,
+        },
+        back: {
+          flight_id: 2,
+          flight_code: "FP1200",
+          from: {
+            city: "Kazan",
+            station: "Kazan Bus station",
+            iata: "KZN",
+            date: "2020-05-01",
+            time: "21:00",
+          },
+          to: {
+            city: "Cheboksary",
+            station: "Cheboksary Bus station",
+            iata: "CSY",
+            date: "2020-05-02",
+            time: "08:00",
+          },
+          cost: 4000,
+          availability: 58,
+        },
+      },
+      {
+        from: {
+          flight_id: 2,
+          flight_code: "FP1200",
+          from: {
+            city: "Kazan",
+            station: "Kazan Bus station",
+            iata: "KZN",
+            date: "2020-05-01",
+            time: "21:00",
+          },
+          to: {
+            city: "Cheboksary",
+            station: "Cheboksary Bus station",
+            iata: "CSY",
+            date: "2020-05-02",
+            time: "08:00",
+          },
+          cost: 4000,
+          availability: 58,
+        },
+      },
+    ],
+    token: false,
     redirectFromUser: true,
   },
   methods: {
@@ -439,6 +504,7 @@ const app = new Vue({
       this.clearErrors(errors);
       for (const key in data) errors[key] = this.checkError(key, data[key]);
       for (const key in errors) if (errors[key]) return;
+      this.token = true;
       this.go("profile");
     },
     clearUserHistory() {
@@ -446,15 +512,17 @@ const app = new Vue({
       this.upcomingBookings = [];
     },
     goPersonalArea() {
-      if (this.user) this.go("profile");
+      if (this.token) this.go("profile");
       else this.go("login");
     },
     bookNow(index) {
       this.initializePassenger();
       this.redirectFromUser = true;
-      this.selectedFlights.to = this.userFlights.favorite[index];
-      this.selectedFlights.to.from.date = null;
-      this.go("booking");
+      this.forms.selectedFlights.to = this.userFlights.favorite[index].from;
+      this.forms.selectedFlights.back = this.userFlights.favorite[index].back;
+      this.forms.selectedFlights.to.from.date = null;
+      this.forms.selectedFlights.back.from.date = null;
+      this.go("booking_again");
     },
     initializePassenger() {
       if (this.token) {
@@ -471,6 +539,24 @@ const app = new Vue({
           },
         ];
       }
+    },
+    addInFavorite(index) {
+      if (
+        !this.userFlights.favorite.find(
+          (flight) =>
+            flight.from.flight_id ===
+            this.userFlights.past[index].from.flight_id
+        )
+      )
+        this.userFlights.favorite.push(this.userFlights.past[index]);
+      else alert("This flight is already in favority");
+    },
+    removeInFavorite(index) {
+      this.userFlights.favorite.splice(index, 1);
+    },
+    logout() {
+      this.token = false;
+      this.go("main");
     },
   },
 });
