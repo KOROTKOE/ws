@@ -5,100 +5,14 @@ const app = new Vue({
     forms: {
       busSearch: {
         from: "KZN",
-        to: "SVO",
+        to: "CSY",
         date1: "2020-12-12",
         date2: "2020-12-15",
-        passengers: 4,
+        passengers: 1,
       },
       flights: {
-        flights_to: [
-          {
-            flight_id: 2,
-            flight_code: "FP 1200",
-            bus: "КАВЗ-4235 Аврора",
-            from: {
-              city: "Cheboksary",
-              station: "Cheboksary Bus station",
-              iata: "CSY",
-              date: "2021-05-01",
-              time: "05:30",
-            },
-            to: {
-              city: "Kazan",
-              station: "Kazan Bus station ",
-              iata: "KZN",
-              date: "2021-05-01",
-              time: "18:00",
-            },
-            cost: 3000,
-            availability: 156,
-          },
-          {
-            flight_id: 14,
-            flight_code: "FP 1201",
-            bus: "КАВЗ-4235 Аврора",
-            from: {
-              city: "Cheboksary",
-              station: "Cheboksary Bus station",
-              iata: "CSY",
-              date: "2021-05-01",
-              time: "21:00",
-            },
-            to: {
-              city: "Kazan",
-              station: "Kazan Bus station ",
-              iata: "KZN",
-              date: "2021-05-02",
-              time: "08:00",
-            },
-            cost: 3000,
-            availability: 156,
-          },
-        ],
-        flights_back: [
-          {
-            flight_id: 1,
-            flight_code: "FP 2100",
-            bus: "ВЕКТОР NEXT 8.8",
-            from: {
-              city: "Kazan",
-              station: "Kazan Bus station",
-              iata: "KZN",
-              date: "2021-05-01",
-              time: "21:00",
-            },
-            to: {
-              city: "Cheboksary",
-              station: "Cheboksary Bus station",
-              iata: "KZN",
-              date: "2021-05-02",
-              time: "08:00",
-            },
-            cost: 4000,
-            availability: 156,
-          },
-          {
-            flight_id: 13,
-            flight_code: "FP 2101",
-            bus: "ВЕКТОР NEXT 8.8",
-            from: {
-              city: "Kazan",
-              station: "Kazan Bus station",
-              iata: "KZN",
-              date: "2021-05-02",
-              time: "08:00",
-            },
-            to: {
-              city: "Cheboksary",
-              station: "Cheboksary Bus station",
-              iata: "CSY",
-              date: "2021-05-02",
-              time: "21:30",
-            },
-            cost: 4000,
-            availability: 156,
-          },
-        ],
+        flights_to: null,
+        flights_back: null,
       },
       selectedFlights: {
         to: null,
@@ -106,16 +20,16 @@ const app = new Vue({
       },
       passengers: [
         {
-          firstName: null,
-          lastName: null,
-          birthDate: null,
-          documentNumber: null,
+          first_name: null,
+          last_name: null,
+          birth_date: null,
+          document_number: null,
         },
       ],
       seat: {
         passenger: null,
         seat: null,
-        type: "back",
+        type: "from",
       },
       registration: {
         first_name: "Ivan",
@@ -140,10 +54,10 @@ const app = new Vue({
       },
       passengers: [
         {
-          firstName: null,
-          lastName: null,
-          birthDate: null,
-          documentNumber: null,
+          first_name: null,
+          last_name: null,
+          birth_date: null,
+          document_number: null,
         },
       ],
       seat: [],
@@ -163,181 +77,55 @@ const app = new Vue({
     },
     currentBooking: {},
     user: {
-      first_name: "Ivan",
-      last_name: "Ivanov",
-      phone: "89001234567",
-      document_number: "1224567890",
+      first_name: null,
+      last_name: null,
+      phone: null,
+      document_number: null,
       flight_count: 10,
     },
     userFlights: {
       favorite: [],
-      past: [
-        {
-          from: {
-            flight_id: 1,
-            flight_code: "FP2100",
-            from: {
-              city: "Cheboksary",
-              station: "Cheboksary Bus station",
-              iata: "CHB",
-              date: "2020-05-01",
-              time: "05:30",
-            },
-            to: {
-              city: "Kazan",
-              station: "Kazan Bus station",
-              iata: "KZN",
-              date: "2020-05-01",
-              time: "18:00",
-            },
-            cost: 3000,
-            availability: 58,
-          },
-          back: {
-            flight_id: 2,
-            flight_code: "FP1200",
-            from: {
-              city: "Kazan",
-              station: "Kazan Bus station",
-              iata: "KZN",
-              date: "2020-05-01",
-              time: "21:00",
-            },
-            to: {
-              city: "Cheboksary",
-              station: "Cheboksary Bus station",
-              iata: "CSY",
-              date: "2020-05-02",
-              time: "08:00",
-            },
-            cost: 4000,
-            availability: 58,
-          },
-        },
-        {
-          back: {
-            flight_id: 1,
-            flight_code: "FP2100",
-            from: {
-              city: "Cheboksary",
-              station: "Cheboksary Bus station",
-              iata: "CHB",
-              date: "2020-05-01",
-              time: "05:30",
-            },
-            to: {
-              city: "Kazan",
-              station: "Kazan Bus station",
-              iata: "KZN",
-              date: "2020-05-01",
-              time: "18:00",
-            },
-            cost: 3000,
-            availability: 58,
-          },
-          from: {
-            flight_id: 2,
-            flight_code: "FP1200",
-            from: {
-              city: "Kazan",
-              station: "Kazan Bus station",
-              iata: "KZN",
-              date: "2020-05-01",
-              time: "21:00",
-            },
-            to: {
-              city: "Cheboksary",
-              station: "Cheboksary Bus station",
-              iata: "CSY",
-              date: "2020-05-02",
-              time: "08:00",
-            },
-            cost: 4000,
-            availability: 58,
-          },
-        },
-      ],
+      past: [],
     },
-    upcomingBookings: [
-      {
-        from: {
-          flight_id: 1,
-          flight_code: "FP2100",
-          from: {
-            city: "Cheboksary",
-            station: "Cheboksary Bus station",
-            iata: "CHB",
-            date: "2020-05-01",
-            time: "05:30",
-          },
-          to: {
-            city: "Kazan",
-            station: "Kazan Bus station",
-            iata: "KZN",
-            date: "2020-05-01",
-            time: "18:00",
-          },
-          cost: 3000,
-          availability: 58,
-        },
-        back: {
-          flight_id: 2,
-          flight_code: "FP1200",
-          from: {
-            city: "Kazan",
-            station: "Kazan Bus station",
-            iata: "KZN",
-            date: "2020-05-01",
-            time: "21:00",
-          },
-          to: {
-            city: "Cheboksary",
-            station: "Cheboksary Bus station",
-            iata: "CSY",
-            date: "2020-05-02",
-            time: "08:00",
-          },
-          cost: 4000,
-          availability: 58,
-        },
-      },
-      {
-        from: {
-          flight_id: 2,
-          flight_code: "FP1200",
-          from: {
-            city: "Kazan",
-            station: "Kazan Bus station",
-            iata: "KZN",
-            date: "2020-05-01",
-            time: "21:00",
-          },
-          to: {
-            city: "Cheboksary",
-            station: "Cheboksary Bus station",
-            iata: "CSY",
-            date: "2020-05-02",
-            time: "08:00",
-          },
-          cost: 4000,
-          availability: 58,
-        },
-      },
-    ],
-    token: false,
+    upcomingBookings: [],
+    token: null,
     redirectFromUser: true,
   },
   methods: {
-    findFlights() {
+    async findFlights() {
       this.clearErrors(this.errors.busSearch);
-      for (const key in this.forms.busSearch)
-        this.errors.busSearch[key] = this.checkError(
-          key,
-          this.forms.busSearch[key]
-        );
-      for (const key in this.errors.busSearch)
-        if (this.errors.busSearch[key]) return;
-      this.go("flights");
+      let url = '/flight';
+      const search = this.forms.busSearch;
+      if(search.date2)
+        url += `?from=${search.from}
+                &to=${search.to}
+                &date1=${search.date1}
+                &date2=${search.date2}
+                &passengers=${search.passengers}`
+      else
+        url += `?from=${search.from}
+                &to=${search.to}
+                &date1=${search.date1}
+                &passengers=${search.passengers}`
+      const response = await sendRequest(url,'GET');
+      if(response.status != 200){
+        let errors = response.json.error.errors;
+        const searchError = this.errors.busSearch;
+        if(errors.from)
+          searchError.from = errors.from;
+        if(errors.to)
+          searchError.to = errors.to;
+          if(errors.date1)
+          searchError.date1 = errors.date1;
+        if(errors.date2)
+          searchError.date2 = errors.date2;
+        if(errors.passengers)
+          searchError.passengers = errors.passengers;
+      }
+      else {
+        this.forms.flights = response.json.data;
+        this.go("flights");
+      }
     },
     clearErrors(errorBlock) {
       for (let key in errorBlock) {
@@ -390,20 +178,20 @@ const app = new Vue({
       return sum;
     },
     addNewPassenger() {
-      if (this.forms.passengers.length === 6)
+      if (this.forms.passengers.length === this.forms.busSearch.passengers)
         alert("This is max passengers count");
       else {
         this.errors.passengers.push({
-          firstName: null,
-          lastName: null,
-          birthDate: null,
-          documentNumber: null,
+          first_name: null,
+          last_name: null,
+          birth_date: null,
+          document_number: null,
         });
         this.forms.passengers.push({
-          firstName: null,
-          lastName: null,
-          birthDate: null,
-          documentNumber: null,
+          first_name: null,
+          last_name: null,
+          birth_date: null,
+          document_number: null,
         });
       }
     },
@@ -415,97 +203,127 @@ const app = new Vue({
         this.errors.passengers.splice(index, 1);
       }
     },
-    makeBooking() {
+    async makeBooking() {
       for (const error of this.errors.passengers) this.clearErrors(error);
-      this.forms.passengers.forEach((passenger, index) => {
-        for (const key in passenger)
-          this.errors.passengers[index][key] = this.checkError(
-            key,
-            passenger[key]
-          );
-      });
-      for (const error of this.errors.passengers)
-        for (const key in error) if (error[key]) return;
-      this.currentBooking = {
-        flights: { ...this.forms.selectedFlights },
-        passengers: this.forms.passengers,
-      };
-      this.go("booking_management");
-    },
-    checkError(name, value) {
-      if (name === "date2") return null;
-      if (!value) return `The ${name} field is requiered`;
-      switch (name) {
-        case "birthDate":
-          if (!/\d\d\d\d-\d\d-\d\d/.test(value))
-            return `The ${name} does not match the format yyyy-mm-dd`;
-          break;
-        case "documentNumber":
-          if (value.length !== 10) return `The ${name} must be 10 digitals`;
-          break;
+      const body = {
+        flight_from:{
+          id:this.forms.selectedFlights.to.flight_id,
+          date:this.forms.selectedFlights.to.from.date
+        },
+        passengers:this.forms.passengers
       }
-      return null;
-    },
-    selectSeat(e) {
-      if (!this.forms.seat.passenger) return;
-      setSelectedSeat(e.target);
-      this.forms.seat.seat = e.target.classList[1].split("-")[2];
+      if(this.forms.selectedFlights.back)
+        body.flight_back = {
+          id:this.forms.selectedFlights.back.flight_id,
+          date:this.forms.selectedFlights.back.from.date
+        }
+      const response = await sendRequest('/booking','POST',body);
+      if(response.status !== 201){
+        if(response.json.error.errors){
+          for(const errorKey in response.json.error.errors){
+            const errorInfo = errorKey.split('.');
+            if(errorInfo[0] === 'passengers'){
+              this.errors.passengers[errorInfo[1]][errorInfo[2]] = response.json.error.errors[errorKey][0];
+            }
+          }
+        }
+      }
+      else{
+        const bookingResponse = await sendRequest(`/booking/${response.json.data.code}`,'GET');
+        this.currentBooking = bookingResponse.json.data;
+        this.go("booking_management");
+      }
     },
     async goToSeats() {
       await this.go("seats");
       let seats = document.querySelectorAll(".seat");
       seats.forEach((seat) => seat.addEventListener("click", this.selectSeat));
     },
-    selectPassenger(documentNumber) {
-      if (documentNumber === this.forms.seat.passenger) return;
-      let selectedPassangerSeat;
-      this.currentBooking.passengers = this.currentBooking.passengers.map(
-        (passenger) => {
-          if (passenger.documentNumber === documentNumber)
-            selectedPassangerSeat = passenger.placeBack;
-          if (passenger.documentNumber === this.forms.seat.passenger)
-            passenger.placeBack = this.forms.seat.seat;
-          return passenger;
-        }
-      );
-      this.forms.seat.passenger = documentNumber;
-      this.forms.seat.seat = selectedPassangerSeat;
-      setSelectedSeat(selectedPassangerSeat);
+    selectSeat(e) {
+      if (!this.forms.seat.passenger) return;
+      setSelectedSeat(e.target);
+      this.forms.seat.seat = e.target.classList[1].split("-")[2].toUpperCase();
+    },
+    selectPassenger(id) {
+      if (id !== this.forms.seat.passenger)
+      this.forms.seat.passenger = id;
     },
     returnToManagementFromSeats() {
-      this.currentBooking.passengers = this.currentBooking.passengers.map(
-        (passenger) => {
-          if (passenger.documentNumber === this.forms.seat.passenger)
-            passenger.placeBack = this.forms.seat.seat;
-          return passenger;
-        }
-      );
       let seats = document.querySelectorAll(".seat");
       seats.forEach((seat) =>
         seat.removeEventListener("click", this.selectSeat)
       );
-      this.go("booking_management");
+        this.go("main");
     },
-    changeSeat() {
+    checkSeats(){
+      if(!this.currentBooking.passengers.every(passenger=>passenger.place_back||passenger.place_from))
+        this.errors.seat.push("Вы не выбрали все места");
+      else
+        this.returnToManagementFromSeats();
+    },
+    async changeSeat() {
       this.errors.seat = [];
-      this.returnToManagementFromSeats();
+      const response = await sendRequest(`/booking/${this.currentBooking.code}/seat`,'PATCH',this.forms.seat);
+      if(response.status !== 200){
+        if(response.json.error.errors)
+          for(let errKey in response.json.error.errors)
+            this.errors.seat.push(...response.json.error.errors[errKey]);
+        else if(response.json.error.message)
+          this.errors.seat.push(response.json.error.message);
+      }
+      else{
+        setSelectedSeat();
+        this.currentBooking.passengers.find(passenger=>passenger.id=this.forms.seat.passenger)[`place_${this.forms.seat.type}`]=this.forms.seat.seat;
+        this.forms.seat = {
+          passenger:null,
+          seat:null,
+          type:"from"
+        }
+        console.log(this.currentBooking.passengers)
+      }
     },
-    register() {
-      const data = this.forms.registration;
-      const errors = this.errors.registration;
-      this.clearErrors(errors);
-      for (const key in data) errors[key] = this.checkError(key, data[key]);
-      for (const key in errors) if (errors[key]) return;
+    async register() {
+      this.clearErrors(this.errors.registration);
+      const response = await sendRequest('/register','POST',this.forms.registration);
+      if(response.status !== 204){
+        const errors = response.json.error.errors;
+        for(let error in errors)
+          this.errors.registration[error] = errors[error][0];
+      }
+      else
       this.go("login");
     },
-    login() {
-      const data = this.forms.login;
-      const errors = this.errors.login;
-      this.clearErrors(errors);
-      for (const key in data) errors[key] = this.checkError(key, data[key]);
-      for (const key in errors) if (errors[key]) return;
-      this.token = true;
-      this.go("profile");
+    async login() {
+      this.clearErrors(this.errors.login);
+      const response = await sendRequest('/login','POST',this.forms.login);
+      if(response.status !== 200){
+        const errors = response.json.error.errors;
+        if(errors.phone)
+          this.errors.login.phone = errors.phone[0];
+        if(errors.password)
+          this.errors.login.password = errors.password[0];
+      }
+      else{
+        this.token = response.json.data.token;
+        const responseUser = await sendRequest('/user','GET',null,this.token);
+        if(responseUser.status === 200){
+          this.user=responseUser.json;
+        }
+        const responseBooking = await sendRequest('/user/booking','GET',null,this.token);
+        if(responseBooking.status === 200)
+        {
+          this.clearUserHistory();
+          const bookings = responseBooking.json.data.items;
+          const now = new Date();
+          for(let i = 0; i < bookings.length;i++){
+            if(now > new Date(`${bookings[i].flights[0].from.date} ${bookings[i].flights[0].from.time}`))
+              this.userFlights.past.push(...bookings[i].flights);
+              else 
+              this.upcomingBookings.push(bookings[i]);
+          }
+        }
+        this.go("profile");
+      }
     },
     clearUserHistory() {
       for (const key in this.userFlights) this.userFlights[key] = [];
@@ -526,19 +344,20 @@ const app = new Vue({
     },
     initializePassenger() {
       if (this.token) {
-        this.forms.passengers[0].firstName = this.user.first_name;
-        this.forms.passengers[0].lastName = this.user.last_name;
-        this.forms.passengers[0].documentNumber = this.user.document_number;
+        this.forms.passengers[0].first_name = this.user.first_name;
+        this.forms.passengers[0].last_name = this.user.last_name;
+        this.forms.passengers[0].document_number = this.user.document_number;
       } else {
         this.forms.passengers = [
           {
-            firstName: null,
-            lastName: null,
-            birthDate: null,
-            documentNumber: null,
+            first_name: null,
+            last_name: null,
+            birth_date: null,
+            document_number: null,
           },
         ];
       }
+      console.log(this.forms.passengers,this.token)
     },
     addInFavorite(index) {
       if (
@@ -564,9 +383,33 @@ const app = new Vue({
 function setSelectedSeat(seat) {
   let seats = document.querySelectorAll(".seat");
   seats.forEach((seat) => seat.classList.remove("seat-selected"));
+  if(!seat) return;
   if (typeof seat === "string")
     document
       .querySelector(`.test-100-${seat.toLowerCase()}`)
       .classList.add("seat-selected");
   else seat.classList.add("seat-selected");
+}
+
+const HOST = 'http://server/api';
+async function sendRequest(url,method,body = null,token = null){
+  const config = {
+    method,
+    headers:{
+      'Content-Type':'application/json'
+    }
+  };
+   if(body)
+    config.body = JSON.stringify(body);
+    if(token)
+      config.headers['Authorization'] = `Bearer ${token}`;
+  const result = await fetch(HOST+url,config);
+  let response = {
+    status:result.status
+  };
+  try{
+    response.json = await result.json();
+  } catch{}
+
+  return response;
 }

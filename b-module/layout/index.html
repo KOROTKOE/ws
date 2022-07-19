@@ -389,11 +389,11 @@
                   type="text"
                   class="form-control test-5-name w-100"
                   placeholder="First name"
-                  v-model="passenger.firstName"
-                  :class="{'is-invalid':errors.passengers[index].firstName}"
+                  v-model="passenger.first_name"
+                  :class="{'is-invalid':errors.passengers[index].first_name}"
                 />
                 <small class="invalid-feedback"
-                  >{{errors.passengers[index].firstName}}</small
+                  >{{errors.passengers[index].first_name}}</small
                 >
               </div>
               <div
@@ -403,11 +403,11 @@
                   type="text"
                   class="form-control test-5-last w-100"
                   placeholder="Last name"
-                  v-model="passenger.lastName"
-                  :class="{'is-invalid':errors.passengers[index].lastName}"
+                  v-model="passenger.last_name"
+                  :class="{'is-invalid':errors.passengers[index].last_name}"
                 />
                 <small class="invalid-feedback"
-                  >{{errors.passengers[index].lastName}}</small
+                  >{{errors.passengers[index].last_name}}</small
                 >
               </div>
               <div
@@ -417,11 +417,11 @@
                   type="text"
                   class="form-control test-5-dob"
                   placeholder="Date of Birth"
-                  v-model="passenger.birthDate"
-                  :class="{'is-invalid':errors.passengers[index].birthDate}"
+                  v-model="passenger.birth_date"
+                  :class="{'is-invalid':errors.passengers[index].birth_date}"
                 />
                 <small class="invalid-feedback"
-                  >{{errors.passengers[index].birthDate}}</small
+                  >{{errors.passengers[index].birth_date}}</small
                 >
               </div>
               <div
@@ -431,11 +431,11 @@
                   type="text"
                   class="form-control test-5-doc"
                   placeholder="Document number"
-                  v-model="passenger.documentNumber"
-                  :class="{'is-invalid':errors.passengers[index].documentNumber}"
+                  v-model="passenger.document_number"
+                  :class="{'is-invalid':errors.passengers[index].document_number}"
                 />
                 <small class="invalid-feedback"
-                  >{{errors.passengers[index].documentNumber}}</small
+                  >{{errors.passengers[index].document_number}}</small
                 >
               </div>
               <div class="col-12 col-xl-2 mt-3 mt-xl-0">
@@ -516,7 +516,6 @@
           >
             <h4>Passengers</h4>
           </div>
-
           <table class="table table-hover">
             <tr>
               <th>First name</th>
@@ -529,15 +528,15 @@
               v-for="passenger in currentBooking.passengers"
               :key="passenger.id"
             >
-              <td class="test-6-name">{{passenger.firstName}}</td>
-              <td class="test-6-last">{{passenger.lastName}}</td>
-              <td class="test-6-dob">{{passenger.birthDate}}</td>
-              <td class="test-6-doc">{{passenger.documentNumber}}</td>
-              <td
-                class="test-6-seat"
-                v-if="Object.keys(currentBooking.flights).length === 2"
-              >
-                {{passenger.placeBack || 'Is not selected'}}
+              <td class="test-6-name">{{passenger.first_name}}</td>
+              <td class="test-6-last">{{passenger.last_name}}</td>
+              <td class="test-6-dob">{{passenger.birth_date}}</td>
+              <td class="test-6-doc">{{passenger.document_number}}</td>
+              <td class="test-6-seat">
+                From {{passenger.place_from || 'Is not selected'}}
+                <p  v-if="Object.keys(currentBooking.flights).length === 2">
+                  Back {{passenger.place_back || 'Is not selected'}}
+                </p>
               </td>
             </tr>
           </table>
@@ -555,7 +554,6 @@
           >
             <div class="passengers">
               <h2>Choose where the passengers will place</h2>
-
               <table class="table table-bordered">
                 <tr>
                   <th>First name</th>
@@ -564,31 +562,48 @@
                 </tr>
                 <tr
                   v-for="passenger of currentBooking.passengers"
-                  :class="{'selected':passenger.documentNumber==forms.seat.passenger}"
+                  :class="{'selected':passenger.id==forms.seat.passenger}"
+                  @click="selectPassenger(passenger.id)"
                 >
-                  <td class="test-90-name">{{passenger.firstName}}</td>
-                  <td class="test-90-last">{{passenger.lastName}}</td>
+                  <td class="test-90-name">{{passenger.first_name}}</td>
+                  <td class="test-90-last">{{passenger.last_name}}</td>
                   <td>
+                    <form v-if="passenger.id==forms.seat.passenger">
+                      <div class="form-group">
+                        <label for="place">Type</label>
+                        <select name="" id="place" class="form-control" v-model="forms.seat.type">
+                          <option value="from">From</option>
+                          <option value="back">Back</option>
+                        </select>
+                      </div>
+                    </form>
                     <span class="test-90-seat"
-                      >{{passenger.documentNumber==forms.seat.passenger&&forms.seat.seat||passenger.placeBack
+                      >From:{{
+                        forms.seat.type==="from"&&forms.seat.passenger === passenger.id && forms.seat.seat||passenger.place_from
+                      || 'Is not selected'
+                    }}
+                      Back:{{ forms.seat.type==="back"&&forms.seat.passenger === passenger.id && forms.seat.seat||passenger.place_back
                       || 'Is not selected'}}</span
                     >
                     <button
                       class="btn btn-secondary ml-3 test-90-bselect"
-                      @click="selectPassenger(passenger.documentNumber)"
+                      @click="changeSeat"
+                      v-if="passenger.id==forms.seat.passenger"
                     >
                       Select
                     </button>
                   </td>
                 </tr>
               </table>
-
+              <div class="alert alert-danger" v-if="errors.seat.length !== 0">
+                <p v-for="error in errors.seat">{{error}}</p>
+              </div>
               <a
                 @click="returnToManagementFromSeats"
                 class="btn test-90-bback btn-secondary"
                 >Back</a
               >
-              <a @click="changeSeat" class="btn test-90-bconfirm btn-success"
+              <a @click="checkSeats" class="btn test-90-bconfirm btn-success"
                 >Confirm</a
               >
             </div>
@@ -963,8 +978,8 @@
           <div class="d-flex justify-content-between align-items-start">
             <h2 class="mb-4">
               Welcome,
-              <span class="test-3-name">John</span>
-              <span class="test-3-last">Doe</span>
+              <span class="test-3-name">{{user.first_name}}</span>
+              <span class="test-3-last">{{user.last_name}}</span>
             </h2>
             <a @click="logout" class="btn btn-sm btn-secondary test-3-logout"
               >Logout</a
@@ -1032,35 +1047,20 @@
           <h4 class="mb-4">Past reservations</h4>
 
           <table class="table table-hover">
-            <tr v-for="(flight,index) in userFlights.past">
+            <tr v-for="(flight,index) of userFlights.past">
               <td>
-                <span class="test-3-from">{{flight.from.from.city}}</span>
+                <span class="test-3-from">{{flight.from.city}}</span>
                 ->
-                <span class="test-3-to">{{flight.from.to.city}}</span>
-                <br />
-                <span class="test-3-from">{{flight.back.from.city}}</span>
-                ->
-                <span class="test-3-to">{{flight.back.to.city}}</span>
+                <span class="test-3-to">{{flight.to.city}}</span>
               </td>
               <td>
                 Departured
-                <span class="test-3-d1">{{flight.from.from.date}}</span>
+                <span class="test-3-d1">{{flight.from.date}}</span>
                 at
-                <span class="test-3-t1">{{flight.from.from.time}}</span>
-
-                <br />
-
-                Departured
-                <span class="test-3-d1">{{flight.back.from.date}}</span>
-                at
-                <span class="test-3-t1">{{flight.back.from.time}}</span>
+                <span class="test-3-t1">{{flight.from.time}}</span>
               </td>
               <td>
-                Arrived at
-                <span class="test-3-t2">{{flight.from.to.time}}</span>
-                <br />
-                Arrived at
-                <span class="test-3-t2">{{flight.back.to.time}}</span>
+                <span class="test-3-t2">{{flight.to.time}}</span>
               </td>
               <td>
                 <a @click="addInFavorite(index)" class="btn btn-sm btn-primary"
@@ -1077,7 +1077,7 @@
           <table class="table table-hover">
             <tr v-for="flight of upcomingBookings">
               <td>
-                <a class="test-3-code" href="booking_management.html"
+                <a class="test-3-code"
                   >{{flight.from.flight_code}}</a
                 >
               </td>
@@ -1123,7 +1123,7 @@
         <section class="mt-5">
           <div class="d-flex justify-content-between align-items-start">
             <h2 class="mb-4">Booking</h2>
-            <a href="search.html" class="btn btn-sm btn-secondary">Back</a>
+            <a @click="backToMain" class="btn btn-sm btn-secondary">Back</a>
           </div>
 
           <div class="d-flex justify-content-between align-items-baseline mb-4">
